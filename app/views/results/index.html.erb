@@ -1,0 +1,41 @@
+<h1>Listing results</h1>
+
+<%= will_paginate @results %>
+
+<table>
+  <tr>
+    <th>Fixture</th>
+    <th>Set1team1</th>
+    <th>Set1team2</th>
+    <th>Set2team1</th>
+    <th>Set2team2</th>
+    <th>Set3team1</th>
+    <th>Set3team2</th>
+    <th>Team1</th>
+    <th>Team2</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @results.each do |result| %>
+  <tr>
+    <td><%= result.fixture %></td>
+    <td><%= result.set1team1 %></td>
+    <td><%= result.set1team2 %></td>
+    <td><%= result.set2team1 %></td>
+    <td><%= result.set2team2 %></td>
+    <td><%= result.set3team1 %></td>
+    <td><%= result.set3team2 %></td>
+    <td><%= result.team1 %></td>
+    <td><%= result.team2 %></td>
+    <td><%= link_to 'Show', result %></td>
+    <td><%= link_to 'Edit', edit_result_path(result) %></td>
+    <td><%= link_to 'Destroy', result, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Result', new_result_path %>

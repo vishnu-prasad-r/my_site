@@ -1,0 +1,85 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mailing listid:</b>
+  <%= @player.Mailing_ListID %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @player.Title %>
+</p>
+
+<p>
+  <b>First name:</b>
+  <%= @player.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @player.last_name %>
+</p>
+
+<p>
+  <b>Address1:</b>
+  <%= @player.Address1 %>
+</p>
+
+<p>
+  <b>Address2:</b>
+  <%= @player.Address2 %>
+</p>
+
+<p>
+  <b>Address3:</b>
+  <%= @player.Address3 %>
+</p>
+
+<p>
+  <b>Address4:</b>
+  <%= @player.Address4 %>
+</p>
+
+<p>
+  <b>Address5:</b>
+  <%= @player.Address5 %>
+</p>
+
+<p>
+  <b>Postal code:</b>
+  <%= @player.Postal_Code %>
+</p>
+
+<p>
+  <b>Home phone:</b>
+  <%= @player.Home_Phone %>
+</p>
+
+<p>
+  <b>Work phone:</b>
+  <%= @player.Work_Phone %>
+</p>
+
+<p>
+  <b>Division:</b>
+  <%= @player.division.try(:name) %>
+</p>
+
+<p>
+  <b>Pot luck:</b>
+  <%= @player.pot_luck %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @player.email %>
+</p>
+
+<p>
+  <b>Over 55s:</b>
+  <%= @player.Over_55s %>
+</p>
+
+
+<%= link_to 'Edit', edit_player_path(@player) %> |
+<%= link_to 'Back', players_path %>

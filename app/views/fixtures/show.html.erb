@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Team1:</b>
+  <%= @fixture.teamone.Team_Name %>
+</p>
+
+<p>
+  <b>Team2:</b>
+  <%= @fixture.teamtwo.Team_Name %>
+</p>
+
+<p>
+  <b>Court:</b>
+  <%= @fixture.court.court %>
+</p>
+
+<p>
+  <b>Division:</b>
+  <%= @fixture.division.name %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @fixture.date %>
+</p>
+
+
+<%= link_to 'Edit', edit_fixture_path(@fixture) %> |
+<%= link_to 'Back', fixtures_path %>

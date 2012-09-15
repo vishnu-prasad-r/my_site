@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+ 
+  <b><%= @event.title %></b>
+</p>
+
+<p>
+
+  
+  <%= @event.description %>
+</p>
+<p>
+
+<%= image_tag @event.img.url %>
+</p>
+
+
+
+
+
+<p>
+</br>
+  <b>Event details:</b>
+  </br>
+  <%= @event.body %>
+</p>
+
+<p>
+  <b>Date: </b>
+  <%= @event.date %>
+</p>
+
+<%if (can? :create, Event) %>
+<%= link_to 'Edit', edit_event_path(@event) %> 
+<%end%>
+|
+<%= link_to 'All events', events_path %>

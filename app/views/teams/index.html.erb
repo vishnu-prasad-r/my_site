@@ -1,0 +1,38 @@
+<h1>Teams</h1>
+
+<%= will_paginate @teams %>
+
+<table id="gradient-style">
+	<thead>
+  <tr>
+  	<th scope="col">Division</th>
+    <th scope="col">Player One</th>
+    <th scope="col">Player Two</th>
+<!--    <th></th>
+    <th></th>
+    <th></th>  -->
+  </tr>
+</thead>
+  	<tfoot>
+    	<tr>
+        	<td colspan="3">Give background color to the table cells to achieve seamless transition</td>
+        </tr>
+	</tfoot>
+<tbody>
+
+<% @teams.each do |team| %>
+  <tr data-href="<%= edit_team_path(team) %>" class="<%= cycle("odd", "even") -%>">
+  	<td><%= team.division.name %></td>
+    <td><%= team.playerone.Full_Name %></td>
+    <td><%= team.playertwo.Full_Name %></td>
+<!--    <td><%= link_to 'Show', team %></td>
+    <td><%= link_to 'Edit', edit_team_path(team) %></td>
+    <td><%= link_to 'Destroy', team, confirm: 'Are you sure?', method: :delete %></td> -->
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Team', new_team_path %>

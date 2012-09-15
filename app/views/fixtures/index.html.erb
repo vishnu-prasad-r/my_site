@@ -1,0 +1,45 @@
+<h1>Fixtures</h1>
+
+<%= will_paginate @fixtures %>
+
+<table id="gradient-style">
+	<thead>
+  <tr>
+  	<th scope="col">Date</th>
+    <th scope="col">Team One</th>
+    <th scope="col">Team Two</th>
+    <th scope="col">Division</th>
+    <th scope="col">Court</th>
+
+    
+<!--    <th></th>
+    <th></th>
+    <th></th> -->
+  </tr>
+  </thead>
+  	<tfoot>
+    	<tr>
+        	<td colspan="5">Give background color to the table cells to achieve seamless transition</td>
+        </tr>
+	</tfoot>
+<tbody>
+<% @fixtures.each do |fixture| %>
+  <tr data-href="<%= edit_fixture_path(fixture) %>" class="<%= cycle("odd", "even") -%>">
+  	<td><%= fixture.date %></td>
+    <td><%= fixture.teamone.Team_Name %></td>
+    <td><%= fixture.teamtwo.Team_Name %></td>
+    <td><%= fixture.division.name %></td>
+    <td><%= fixture.court.try(:court) %></td>
+
+
+<!--    <td><%= link_to 'Show', fixture %></td>
+    <td><%= link_to 'Edit', edit_fixture_path(fixture) %></td>
+    <td><%= link_to 'Destroy', fixture, confirm: 'Are you sure?', method: :delete %></td> -->
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Fixture', new_fixture_path %>

@@ -1,0 +1,8 @@
+<h1>Edit Player Details</h1>
+
+<%= render 'form' %>
+
+<p></p>
+<%= link_to 'Show', @player %> |
+<%= link_to 'Back', players_path %> |
+<%= link_to 'Destroy', @player, confirm: 'Are you sure?', method: :delete %>

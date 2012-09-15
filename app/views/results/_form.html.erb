@@ -1,0 +1,53 @@
+<%= form_for(@result) do |f| %>
+  <% if @result.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@result.errors.count, "error") %> prohibited this result from being saved:</h2>
+
+      <ul>
+      <% @result.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fixture %><br />
+    <%= f.number_field :fixture %>
+  </div>
+  <div class="field">
+    <%= f.label :set1team1 %><br />
+    <%= f.number_field :set1team1 %>
+  </div>
+  <div class="field">
+    <%= f.label :set1team2 %><br />
+    <%= f.number_field :set1team2 %>
+  </div>
+  <div class="field">
+    <%= f.label :set2team1 %><br />
+    <%= f.number_field :set2team1 %>
+  </div>
+  <div class="field">
+    <%= f.label :set2team2 %><br />
+    <%= f.number_field :set2team2 %>
+  </div>
+  <div class="field">
+    <%= f.label :set3team1 %><br />
+    <%= f.number_field :set3team1 %>
+  </div>
+  <div class="field">
+    <%= f.label :set3team2 %><br />
+    <%= f.number_field :set3team2 %>
+  </div>
+  <div class="field">
+    <%= f.label :team1 %><br />
+    <%= f.number_field :team1 %>
+  </div>
+  <div class="field">
+    <%= f.label :team2 %><br />
+    <%= f.number_field :team2 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

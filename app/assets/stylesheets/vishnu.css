@@ -1,0 +1,41 @@
+#event-box
+{
+background-color:#F6F6F5;
+width:99%;
+padding: 10px 10px 10px 10px;
+}
+
+#event-table
+{
+background-color:#333333;
+width:100%;
+padding: 10px 10px 10px 50px;
+}
+
+#event-table td
+{ padding: 0px 0px 50px 50px; }
+
+.event-description
+{
+color:#666;
+}
+.event-caption
+{
+color:#009933;
+font-weight: bold
+}
+
+.event-description-textbox
+{
+width:250px;
+height:40px;
+padding: 3px;
+/*border: none;*/
+}
+
+.event-body-textbox
+{
+width:250px;
+height:80px;
+padding: 3px;
+}

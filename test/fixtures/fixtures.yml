@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  Team1: 1
+  Team2: 1
+  Court: MyString
+  Division: MyString
+  date: 2012-04-17
+
+two:
+  Team1: 1
+  Team2: 1
+  Court: MyString
+  Division: MyString
+  date: 2012-04-17

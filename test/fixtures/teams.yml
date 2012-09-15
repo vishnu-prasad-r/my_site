@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  Playerone: 1
+  Playertwo: 1
+
+two:
+  Playerone: 1
+  Playertwo: 1

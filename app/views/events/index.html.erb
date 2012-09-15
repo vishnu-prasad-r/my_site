@@ -1,0 +1,62 @@
+<% colCount=0%>
+
+<h1>EVENTS</h1>
+<div id="event-box">
+
+<%if (can? :create, Event) %>
+<a  href="javascript:void(0)" onClick = "return TINY.box.show({url:'<%=new_event_url%>',close:true})"><img src="assets/new-event.png/"></a>
+<%end%>
+
+<table id="event-table">
+  <!--<tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Picture</th>
+    <th>Body</th>
+    <th>Date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>-->
+  
+ 
+
+
+
+<% @events.each do |event| %>
+ <%if colCount==0 then%>
+ 
+  <tr>
+  
+  	<%colCount= colCount + 1%>
+	<%else
+	  colCount= colCount + 1
+	  end
+	%>
+	
+	
+    <td>
+    <a href='<%= event_path(event)%>'><%= image_tag event.img.url(:medium) %></a></br>
+    </br>
+    <span class="event-caption"><%= event.title %></span></br>
+    <div style="width:300px;" class="event-description"><%= event.description %></br><%= link_to ' Details >>', event %></br></br> <b>Time: <%= event.date %></b></div></br>
+    <!--<td><= event.body > ></b></td>-->
+  
+  <%if (can? :update, Event) %>
+   <%= link_to 'Edit', edit_event_path(event) %>
+   <%= link_to 'Destroy', event, confirm: 'Are you sure?', method: :delete %></td>
+<%end%>
+    
+
+    <%if colCount==2 then%>
+	</tr>
+	
+	<%colCount=0
+
+	end%>
+<% end %>
+</table>
+</div>
+<br />
+
+<!--<%= link_to 'New Event', new_event_path %>-->

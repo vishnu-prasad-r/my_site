@@ -1,0 +1,41 @@
+<h1>Courts</h1>
+
+<table id="gradient-style">
+	<thead>
+		  <tr>
+		    <th scope="col">Court</th>
+		    <th scope="col">Lights</th>
+		    <th scope="col">Name</th>
+		    <th scope="col">Address</th>
+		    <th scope="col">Home</th>
+		    <th scope="col">Mobile</th>
+<!--		    <th></th>
+		    <th></th>
+		    <th></th> -->
+		  </tr>
+ 	</thead>
+	<tfoot>
+    	<tr>
+        	<td colspan="6">Give background color to the table cells to achieve seamless transition</td>
+        </tr>
+	</tfoot>
+	<tbody>
+<% @courts.each do |court| %>
+  <tr data-href="<%= edit_court_path(court) %>">
+    <td><%= court.court %></td>
+    <td><%= court.lights %></td>
+    <td><%= court.name %></td>
+    <td><%= court.address %></td>
+    <td><%= court.home %></td>
+    <td><%= court.mobile %></td>
+<!--   <td><%= link_to 'Show', court %></td>
+    <td><%= link_to 'Edit', edit_court_path(court) %></td>
+    <td><%= link_to 'Destroy', court, confirm: 'Are you sure?', method: :delete %></td> -->
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Court', new_court_path %>

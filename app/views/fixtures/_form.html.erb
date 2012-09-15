@@ -1,0 +1,37 @@
+<%= form_for(@fixture) do |f| %>
+  <% if @fixture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fixture.errors.count, "error") %> prohibited this fixture from being saved:</h2>
+
+      <ul>
+      <% @fixture.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <div class="field">
+    <%= f.label :division %><br />
+    <%= f.collection_select :division_id, Division.all, :id, :name, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :teamone %><br />
+    <%= f.grouped_collection_select :teamone_id, Division.order("created_at ASC"), :teams, :name, :id, :Team_Name, include_blank: true %>
+  </div>
+  <div class="field">
+<%= f.label :teamtwo %><br />
+    <%= f.grouped_collection_select :teamtwo_id, Division.order("created_at ASC"), :teams, :name, :id, :Team_Name, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :court %><br />
+    <%= f.collection_select :court_id, Court.all, :id, :court %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

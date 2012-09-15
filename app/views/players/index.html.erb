@@ -1,0 +1,44 @@
+<h1>Players</h1>
+
+<%= will_paginate @players %>
+
+<table id="gradient-style">
+	<thead>
+	  <tr>
+		<th scope="col"><%= sortable "first_name", "First Name" %></th>
+		<th scope="col"><%= sortable "last_name", "Last Name" %></th>
+		<th scope="col">Home Phone</th>
+		<th scope="col">Work Phone</th>
+		<th scope="col">Division</th>
+		<th scope="col">Email</th>
+<!--		<th scope="col"></th>
+		<th scope="col"></th>
+		<th scope="col"></th> -->
+	   </tr>
+	</thead>
+	<tfoot>
+    	<tr>
+        	<td colspan="6">Give background color to the table cells to achieve seamless transition</td>
+        </tr>
+	</tfoot>
+	<tbody>
+<% @players.each do |player| %>
+  <tr data-href="<%= edit_player_path(player) %>" class="<%= cycle("odd", "even") -%>">
+    <td><%= player.first_name %></td>
+    <td><%= player.last_name %></td>
+    <td><%= player.Home_Phone %></td>
+    <td><%= player.Work_Phone %></td>
+    <td><%= player.division.try(:name) %></td>
+ <!--       <td><%= player.division.try(:name) %></td> -->
+    <td><%= player.email %></td>
+<!--    <td><%= link_to 'Show', player %></td>
+    <td><%= link_to 'Edit', edit_player_path(player) %></td>
+    <td><%= link_to 'Destroy', player, confirm: 'Are you sure?', method: :delete %></td> -->
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Player', new_player_path %>

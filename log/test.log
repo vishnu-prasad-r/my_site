@@ -1,0 +1,264 @@
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (1.0ms)[0m  DELETE FROM "fixtures"
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "fixtures" ("Team1", "Team2", "Court", "Division", "date", "created_at", "updated_at", "id") VALUES (1, 1, 'MyString', 'MyString', '2012-04-17', '2012-04-21 14:43:30', '2012-04-21 14:43:30', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "fixtures" ("Team1", "Team2", "Court", "Division", "date", "created_at", "updated_at", "id") VALUES (1, 1, 'MyString', 'MyString', '2012-04-17', '2012-04-21 14:43:30', '2012-04-21 14:43:30', 298486374)
+  [1m[36mFixture Delete (0.0ms)[0m  [1mDELETE FROM "players"[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "players" ("firstname", "lastname", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2012-04-21 14:43:30', '2012-04-21 14:43:30', 980190962)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "players" ("firstname", "lastname", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2012-04-21 14:43:30', '2012-04-21 14:43:30', 298486374)[0m
+  [1m[35mFixture Delete (0.0ms)[0m  DELETE FROM "results"
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "results" ("fixture", "set1team1", "set1team2", "set2team1", "set2team2", "set3team1", "set3team2", "team1", "team2", "created_at", "updated_at", "id") VALUES (1, 1, 1, 1, 1, 1, 1, 1, 1, '2012-04-21 14:43:30', '2012-04-21 14:43:30', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "results" ("fixture", "set1team1", "set1team2", "set2team1", "set2team2", "set3team1", "set3team2", "team1", "team2", "created_at", "updated_at", "id") VALUES (1, 1, 1, 1, 1, 1, 1, 1, 1, '2012-04-21 14:43:30', '2012-04-21 14:43:30', 298486374)
+  [1m[36mFixture Delete (0.0ms)[0m  [1mDELETE FROM "teams"[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "teams" ("Playerone", "Playertwo", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-21 14:43:30', '2012-04-21 14:43:30', 980190962)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "teams" ("Playerone", "Playertwo", "created_at", "updated_at", "id") VALUES (1, 1, '2012-04-21 14:43:30', '2012-04-21 14:43:30', 298486374)[0m
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Load (0.0ms)[0m  SELECT "fixtures".* FROM "fixtures" WHERE "fixtures"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (21.0ms)[0m  [1mSELECT COUNT(*) FROM "fixtures" [0m
+Processing by FixturesController#create as HTML
+  Parameters: {"fixture"=>{"id"=>"980190962", "Team1"=>"1", "Team2"=>"1", "Court"=>"MyString", "Division"=>"MyString", "date"=>"2012-04-17", "created_at"=>"2012-04-21 14:43:30 UTC", "updated_at"=>"2012-04-21 14:43:30 UTC"}}
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (5.0ms)[0m  [1mINSERT INTO "fixtures" ("Court", "Division", "Team1", "Team2", "created_at", "date", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["Court", "MyString"], ["Division", "MyString"], ["Team1", 1], ["Team2", 1], ["created_at", Sat, 21 Apr 2012 14:43:30 UTC +00:00], ["date", Tue, 17 Apr 2012], ["updated_at", Sat, 21 Apr 2012 14:43:30 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/fixtures/980190963
+Completed 302 Found in 43ms (ActiveRecord: 6.0ms)
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "fixtures" [0m
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Load (0.0ms)[0m  SELECT "fixtures".* FROM "fixtures" WHERE "fixtures"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "fixtures" [0m
+Processing by FixturesController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mFixture Load (0.0ms)[0m  SELECT "fixtures".* FROM "fixtures" WHERE "fixtures"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  DELETE FROM "fixtures" WHERE "fixtures"."id" = ?  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/fixtures
+Completed 302 Found in 5ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "fixtures" 
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFixture Load (0.0ms)[0m  [1mSELECT "fixtures".* FROM "fixtures" WHERE "fixtures"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by FixturesController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mFixture Load (0.0ms)[0m  SELECT "fixtures".* FROM "fixtures" WHERE "fixtures"."id" = ? LIMIT 1  [["id", "980190962"]]
+  Rendered fixtures/_form.html.erb (96.0ms)
+Completed 200 OK in 314ms (Views: 313.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFixture Load (0.0ms)[0m  [1mSELECT "fixtures".* FROM "fixtures" WHERE "fixtures"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by FixturesController#index as HTML
+  [1m[35mFixture Load (0.0ms)[0m  SELECT "fixtures".* FROM "fixtures" 
+Completed 200 OK in 26ms (Views: 24.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mFixture Load (0.0ms)[0m  [1mSELECT "fixtures".* FROM "fixtures" WHERE "fixtures"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by FixturesController#new as HTML
+  Rendered fixtures/_form.html.erb (33.0ms)
+Completed 200 OK in 39ms (Views: 39.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Load (0.0ms)[0m  SELECT "fixtures".* FROM "fixtures" WHERE "fixtures"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by FixturesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mFixture Load (0.0ms)[0m  [1mSELECT "fixtures".* FROM "fixtures" WHERE "fixtures"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+Completed 200 OK in 6ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Load (0.0ms)[0m  SELECT "fixtures".* FROM "fixtures" WHERE "fixtures"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by FixturesController#update as HTML
+  Parameters: {"fixture"=>{"id"=>"980190962", "Team1"=>"1", "Team2"=>"1", "Court"=>"MyString", "Division"=>"MyString", "date"=>"2012-04-17", "created_at"=>"2012-04-21 14:43:30 UTC", "updated_at"=>"2012-04-21 14:43:30 UTC"}, "id"=>"980190962"}
+  [1m[36mFixture Load (1.0ms)[0m  [1mSELECT "fixtures".* FROM "fixtures" WHERE "fixtures"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (1.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/fixtures/980190962
+Completed 302 Found in 4ms (ActiveRecord: 2.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mPlayer Load (0.0ms)[0m  SELECT "players".* FROM "players" WHERE "players"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "players" [0m
+Processing by PlayersController#create as HTML
+  Parameters: {"player"=>{"id"=>"980190962", "firstname"=>"MyString", "lastname"=>"MyString", "created_at"=>"2012-04-21 14:43:30 UTC", "updated_at"=>"2012-04-21 14:43:30 UTC"}}
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "players" ("created_at", "firstname", "lastname", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Sat, 21 Apr 2012 14:43:30 UTC +00:00], ["firstname", "MyString"], ["lastname", "MyString"], ["updated_at", Sat, 21 Apr 2012 14:43:30 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/players/980190963
+Completed 302 Found in 7ms (ActiveRecord: 2.0ms)
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "players" [0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mPlayer Load (1.0ms)[0m  SELECT "players".* FROM "players" WHERE "players"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "players" [0m
+Processing by PlayersController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mPlayer Load (0.0ms)[0m  SELECT "players".* FROM "players" WHERE "players"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  DELETE FROM "players" WHERE "players"."id" = ?  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/players
+Completed 302 Found in 5ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "players" 
+  [1m[36m (1.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mPlayer Load (0.0ms)[0m  [1mSELECT "players".* FROM "players" WHERE "players"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by PlayersController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mPlayer Load (0.0ms)[0m  SELECT "players".* FROM "players" WHERE "players"."id" = ? LIMIT 1  [["id", "980190962"]]
+  Rendered players/_form.html.erb (3.0ms)
+Completed 200 OK in 12ms (Views: 10.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mPlayer Load (0.0ms)[0m  [1mSELECT "players".* FROM "players" WHERE "players"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by PlayersController#index as HTML
+  [1m[35mPlayer Load (0.0ms)[0m  SELECT "players".* FROM "players" 
+Completed 200 OK in 11ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mPlayer Load (1.0ms)[0m  [1mSELECT "players".* FROM "players" WHERE "players"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by PlayersController#new as HTML
+  Rendered players/_form.html.erb (2.0ms)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mPlayer Load (0.0ms)[0m  SELECT "players".* FROM "players" WHERE "players"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by PlayersController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mPlayer Load (0.0ms)[0m  [1mSELECT "players".* FROM "players" WHERE "players"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mPlayer Load (0.0ms)[0m  SELECT "players".* FROM "players" WHERE "players"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by PlayersController#update as HTML
+  Parameters: {"player"=>{"id"=>"980190962", "firstname"=>"MyString", "lastname"=>"MyString", "created_at"=>"2012-04-21 14:43:30 UTC", "updated_at"=>"2012-04-21 14:43:30 UTC"}, "id"=>"980190962"}
+  [1m[36mPlayer Load (0.0ms)[0m  [1mSELECT "players".* FROM "players" WHERE "players"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/players/980190962
+Completed 302 Found in 4ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mResult Load (0.0ms)[0m  SELECT "results".* FROM "results" WHERE "results"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "results" [0m
+Processing by ResultsController#create as HTML
+  Parameters: {"result"=>{"id"=>"980190962", "fixture"=>"1", "set1team1"=>"1", "set1team2"=>"1", "set2team1"=>"1", "set2team2"=>"1", "set3team1"=>"1", "set3team2"=>"1", "team1"=>"1", "team2"=>"1", "created_at"=>"2012-04-21 14:43:30 UTC", "updated_at"=>"2012-04-21 14:43:30 UTC"}}
+Completed 500 Internal Server Error in 160ms
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mResult Load (0.0ms)[0m  SELECT "results".* FROM "results" WHERE "results"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "results" [0m
+Processing by ResultsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mResult Load (1.0ms)[0m  SELECT "results".* FROM "results" WHERE "results"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  DELETE FROM "results" WHERE "results"."id" = ?  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/results
+Completed 302 Found in 4ms (ActiveRecord: 2.0ms)
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "results" 
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mResult Load (0.0ms)[0m  [1mSELECT "results".* FROM "results" WHERE "results"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by ResultsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mResult Load (0.0ms)[0m  SELECT "results".* FROM "results" WHERE "results"."id" = ? LIMIT 1  [["id", "980190962"]]
+  Rendered results/_form.html.erb (8.0ms)
+Completed 200 OK in 55ms (Views: 54.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mResult Load (0.0ms)[0m  [1mSELECT "results".* FROM "results" WHERE "results"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by ResultsController#index as HTML
+  [1m[35mResult Load (0.0ms)[0m  SELECT "results".* FROM "results" 
+  [1m[36mFixture Load (0.0ms)[0m  [1mSELECT "fixtures".* FROM "fixtures" WHERE "fixtures"."result_id" = 298486374 LIMIT 1[0m
+SQLite3::SQLException: no such column: fixtures.result_id: SELECT  "fixtures".* FROM "fixtures"  WHERE "fixtures"."result_id" = 298486374 LIMIT 1
+Completed 500 Internal Server Error in 121ms
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mResult Load (0.0ms)[0m  SELECT "results".* FROM "results" WHERE "results"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by ResultsController#new as HTML
+  Rendered results/_form.html.erb (6.0ms)
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mResult Load (0.0ms)[0m  [1mSELECT "results".* FROM "results" WHERE "results"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by ResultsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mResult Load (0.0ms)[0m  SELECT "results".* FROM "results" WHERE "results"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36mFixture Load (0.0ms)[0m  [1mSELECT "fixtures".* FROM "fixtures" WHERE "fixtures"."result_id" = 980190962 LIMIT 1[0m
+SQLite3::SQLException: no such column: fixtures.result_id: SELECT  "fixtures".* FROM "fixtures"  WHERE "fixtures"."result_id" = 980190962 LIMIT 1
+Completed 500 Internal Server Error in 9ms
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mResult Load (0.0ms)[0m  SELECT "results".* FROM "results" WHERE "results"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by ResultsController#update as HTML
+  Parameters: {"result"=>{"id"=>"980190962", "fixture"=>"1", "set1team1"=>"1", "set1team2"=>"1", "set2team1"=>"1", "set2team2"=>"1", "set3team1"=>"1", "set3team2"=>"1", "team1"=>"1", "team2"=>"1", "created_at"=>"2012-04-21 14:43:30 UTC", "updated_at"=>"2012-04-21 14:43:30 UTC"}, "id"=>"980190962"}
+  [1m[36mResult Load (0.0ms)[0m  [1mSELECT "results".* FROM "results" WHERE "results"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 3ms
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "teams" [0m
+Processing by TeamsController#create as HTML
+  Parameters: {"team"=>{"id"=>"980190962", "Playerone"=>"1", "Playertwo"=>"1", "created_at"=>"2012-04-21 14:43:30 UTC", "updated_at"=>"2012-04-21 14:43:30 UTC"}}
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "teams" ("Playerone", "Playertwo", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["Playerone", 1], ["Playertwo", 1], ["created_at", Sat, 21 Apr 2012 14:43:30 UTC +00:00], ["updated_at", Sat, 21 Apr 2012 14:43:30 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/teams/980190963
+Completed 302 Found in 10ms (ActiveRecord: 2.0ms)
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "teams" [0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mTeam Load (1.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "teams" [0m
+Processing by TeamsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.0ms)[0m  DELETE FROM "teams" WHERE "teams"."id" = ?  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/teams
+Completed 302 Found in 8ms (ActiveRecord: 2.0ms)
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "teams" 
+  [1m[36m (2.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by TeamsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36mPlayer Load (0.0ms)[0m  [1mSELECT "players".* FROM "players" [0m
+  [1m[35mPlayer Load (0.0ms)[0m  SELECT "players".* FROM "players" 
+  Rendered teams/_form.html.erb (9.0ms)
+Completed 200 OK in 43ms (Views: 41.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by TeamsController#index as HTML
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" 
+Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (1.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTeam Load (1.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by TeamsController#new as HTML
+  [1m[35mPlayer Load (1.0ms)[0m  SELECT "players".* FROM "players" 
+  [1m[36mPlayer Load (0.0ms)[0m  [1mSELECT "players".* FROM "players" [0m
+  Rendered teams/_form.html.erb (7.0ms)
+Completed 200 OK in 12ms (Views: 10.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by TeamsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+Completed 200 OK in 6ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mTeam Load (0.0ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by TeamsController#update as HTML
+  Parameters: {"team"=>{"id"=>"980190962", "Playerone"=>"1", "Playertwo"=>"1", "created_at"=>"2012-04-21 14:43:30 UTC", "updated_at"=>"2012-04-21 14:43:30 UTC"}, "id"=>"980190962"}
+  [1m[36mTeam Load (0.0ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/teams/980190962
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
