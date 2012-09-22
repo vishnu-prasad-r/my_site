@@ -1,0 +1,16 @@
+<div class="search-div">
+
+<form action="<%=players_url%>">	
+
+
+
+ Name <input name="name" type="text"/> Division
+		<%=collection_select(:division, :id, Division.all, :id, :name, :prompt => true) %> 
+		<%=check_box_tag 'Pot luck?', 'yes', false%>
+		<input type="submit" value="Search"> </form>
+		
+		<%if (can? :create, Player) %>
+<button class="new_item_button" onclick="return TINY.box.show({url:'<%=new_player_url%>',width:800,height:600,close:true})">New Player</button>
+
+<%end%>
+</div>
