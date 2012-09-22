@@ -204,4 +204,13 @@ Saturday 8 September 2012
 [11:03:20 PM IST] adamcooperman: I am always online if you have any queries
 Monday 10 September 2012
 [2:04:03 AM IST] Vishnuprasad R: Elance complains that your payment account is not set up correctly for 'work view'. Anyway I am continueing the work. Please resolve the issue when you get time
+ No worries
+[8:48:53 PM IST] adamcooperman: I will rebuild the server now
+[8:49:54 PM IST] adamcooperman: root
+RH4P4dhLAjue
+[8:50:05 PM IST] adamcooperman: its building now
+[8:50:11 PM IST] adamcooperman: 5.79.24.24
+[8:51:47 PM IST] adamcooperman: Built
+[8:52:20 PM IST] adamcooperman: I recommend you change the database names and logins in the scripts to not include capitals to prevent issues with postgre
+[9:22:16 PM IST] Vishnuprasad R: ok
 

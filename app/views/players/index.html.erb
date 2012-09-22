@@ -1,5 +1,8 @@
 <h1>Players</h1>
 
+<%if (can? :search,Player)%>
+<%=render 'playersearch' %>
+<%end%>
 <%= will_paginate @players %>
 
 <table id="gradient-style">
@@ -41,4 +44,3 @@
 
 <br />
 
-<%= link_to 'New Player', new_player_path %>

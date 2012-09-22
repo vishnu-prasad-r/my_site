@@ -12,23 +12,33 @@
 <tbody>
 <tr>
 <td>Mandy Berrisford</td>
+<%if signed_in?%>
 <td>07808477044</td>
 <td>mberrisford@btinternet.com</td>
+<%else%>
+<td><i><pre>   Only signed in members can view contact details </pre></i></td>
+<%end%>
 </tr>
 <tr>
 <td>Janet Evans</td>
+<%if signed_in?%>
 <td>01948 662138</td>
 <td>janet66evans@googlemail.com</td>
+<%end%>
 </tr>
 <tr>
 <td>Helen Calder</td>
+<%if signed_in?%>
 <td>07958 646321</td>
 <td>helen.calder@yahoo.co.uk</td>
+<%end%>
 </tr>
 <tr>
 <td>Julie Thornhill</td>
+<%if signed_in?%>
 <td>07989 354368</td>
 <td>juliethornhill@hotmail.co.uk</td>
+<%end%>
 </tr>
 </tbody>
 </table>
@@ -39,28 +49,43 @@
 <tbody>
 <tr>
 <td>Premier</td>
+
 <td>Suzi Mottershead</td>
+<%if signed_in?%>
 <td>01270 812365</td>
+<%end%>
 </tr>
 <tr>
 <td>Div 1</td>
+
 <td>Julie Thornhill</td>
+<%if signed_in?%>
 <td>01270 753074</td>
+<%end%>
 </tr>
 <tr>
 <td>Div 2</td>
+
 <td>Suzanne Kinsey</td>
+<%if signed_in?%>
 <td>01270 528244</td>
+<%end%>
 </tr>
 <tr>
 <td>Div 3</td>
+
 <td>Marjorie Heler</td>
+<%if signed_in?%>
 <td>01782 720251</td>
+<%end%>
 </tr>
 <tr>
 <td>Div 4</td>
+
 <td>Sue Cheetham</td>
+<%if signed_in?%>
 <td>01270 820463</td>
+<%end%>
 </tr>
 </tbody>
 </table>

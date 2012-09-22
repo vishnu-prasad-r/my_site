@@ -1,7 +1,9 @@
 TWL::Application.routes.draw do
+#devise_for :users,  :controllers => { :registrations => "users/registrations" }
+devise_for :users
   resources :events
 
-  devise_for :users
+
 
   resources :courts
 
@@ -10,14 +12,7 @@ TWL::Application.routes.draw do
 
   get "info/rules"
   
-
-  match 'user/edit' => 'users#edit', :as => :edit_current_user
-
-  match 'signup' => 'users#new', :as => :signup
-
-  match 'logout' => 'sessions#destroy', :as => :logout
-
-  match 'login' => 'sessions#new', :as => :login
+ 
 
   #resources :sessions
 
@@ -108,7 +103,4 @@ end
 	root :to => 'info#home'
  
 
-
-  
-  
 end

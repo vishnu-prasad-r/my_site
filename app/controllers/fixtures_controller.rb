@@ -1,6 +1,7 @@
 class FixturesController < ApplicationController
   # GET /fixtures
   # GET /fixtures.json
+    before_filter :authenticate_user!, :except => [:show,:index]
   def index
     @fixtures = Fixture.page(params[:page]).all
 

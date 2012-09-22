@@ -8,6 +8,7 @@ gem "paperclip", "~> 3.0"
 #gem 'mysql2', :platform => '-x86-mingw32'
 #gem 'mysql2'
 gem 'sqlite3', :group => :development
+gem 'thin', :group => :development
 gem "nifty-generators", :group => :development
 #gem 'bundler', '~> 1.0.22' 
 gem 'will_paginate', '~> 3.0.3'
@@ -47,3 +48,4 @@ gem "mocha", :group => :test
 gem 'bcrypt-ruby', '~> 3.0.1'
 gem 'devise'
 gem 'cancan'
+

@@ -54,16 +54,21 @@
 					</li>
 					<li><%= link_to "Fixtures", fixtures_path ,:id => "menu2" %></li>
 					<li><%= link_to "Events", events_path ,:id => "menu2" %></li>
-					<li><%= link_to "Log In" ,"",:id=>"menu9" %>
+					 <% if signed_in? %>
+					<li><%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+					<%else%>
+					
+					<li><%= link_to "Log In" ,new_user_session_path,:id=>"menu9" %>
 					<ul>
-						<li><%= link_to "Administrator", "", :class => "first-item", :id => "menu54" %></li>
-						<li><%= link_to "Player", "", :class => "first-item", :id => "menu54" %></li>
-						<li><%= link_to "Premier", "", :class => "first-item", :id => "menu54" %></li>
-						<li><%= link_to "Division 1", "", :class => "first-item", :id => "menu54" %></li>
-						<li><%= link_to "Division 2", "", :class => "first-item", :id => "menu54" %></li>
-						<li><%= link_to "Division 3", "", :class => "first-item", :id => "menu54" %></li>
-						<li><%= link_to "Division 4", "", :class => "first-item", :id => "menu54" %></li>
+						<li><%= link_to "Administrator", new_user_session_path, :class => "first-item", :id => "menu54" %></li>
+						<li><%= link_to "Player", new_user_session_path, :class => "first-item", :id => "menu54" %></li>
+						<li><%= link_to "Premier", new_user_session_path, :class => "first-item", :id => "menu54" %></li>
+						<li><%= link_to "Division 1", new_user_session_path, :class => "first-item", :id => "menu54" %></li>
+						<li><%= link_to "Division 2", new_user_session_path, :class => "first-item", :id => "menu54" %></li>
+						<li><%= link_to "Division 3", new_user_session_path, :class => "first-item", :id => "menu54" %></li>
+						<li><%= link_to "Division 4", new_user_session_path, :class => "first-item", :id => "menu54" %></li>
 					</ul>
+					<%end%>
 			</li>
 		</ul>
 	</div>
@@ -83,69 +88,7 @@
 
     </div>
 
-	<!--	<div id="leftcolumn">
-
-        		<div class="module">
-			<div>
-				<div>
-					<div>
-													<h3>Login Form</h3>
-													
-	<!-- 
-   
- 
-											<form action="/joomla/index.php" method="post" name="login" id="form-login" >
-		<fieldset class="input">
-	<p id="form-login-username">
-		<label for="modlgn_username">Username</label><br />
-		<input id="modlgn_username" type="text" name="username" class="inputbox" alt="username" size="18" />
-	</p>
-	<p id="form-login-password">
-		<label for="modlgn_passwd">Password</label><br />
-		<input id="modlgn_passwd" type="password" name="passwd" class="inputbox" size="18" alt="password" />
-	</p>
-		<p id="form-login-remember">
-		<label for="modlgn_remember">Remember Me</label>
-		<input id="modlgn_remember" type="checkbox" name="remember" class="inputbox" value="yes" alt="Remember Me" />
-	</p>
-		<input type="submit" name="Submit" class="button" value="Login" />
-	</fieldset>
-	<ul>
-		<li>
-			<a href="/joomla/index.php?option=com_user&amp;view=reset">
-			Forgot your password?</a>
-		</li>
-		<li>
-			<a href="/joomla/index.php?option=com_user&amp;view=remind">
-			Forgot your username?</a>
-		</li>
-				<li>
-			<a href="/joomla/index.php?option=com_user&amp;view=register">
-				Create an account</a>
-		</li>
-			</ul>
 	
-	<input type="hidden" name="option" value="com_user" />
-	<input type="hidden" name="task" value="login" />
-	<input type="hidden" name="return" value="L2pvb21sYS8=" />
-	<input type="hidden" name="c09d4bbdd65017484a112bfc7bc8fe97" value="1" /></form>
-	-->
-	<!--
-	<% if logged_in? %>
-     Welcome <%= current_user.username %>.
-     <%= link_to "Edit profile", edit_current_user_path %> or
-     <%= link_to "Log out", logout_path %>
-   <% else %>
-     <%= link_to "Sign up", signup_path %> or
-     <%= link_to "log in", login_path %>.
-   <% end %>
-					</div>
-				</div>
-			</div>
-		</div>
-
-    </div>
- -->
         	<div id="maincolumn_middle">
 
 

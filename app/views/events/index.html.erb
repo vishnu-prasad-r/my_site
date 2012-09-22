@@ -1,11 +1,13 @@
 <% colCount=0%>
 
 <h1>EVENTS</h1>
+<%if (can? :create, Event) %>
+<div class="search-div"> 
+<Button class="new_item_button" onClick = "return TINY.box.show({url:'<%=new_event_url%>',close:true})">Create Event</Button>
+</div> 
+<%end%>
 <div id="event-box">
 
-<%if (can? :create, Event) %>
-<a  href="javascript:void(0)" onClick = "return TINY.box.show({url:'<%=new_event_url%>',close:true})"><img src="assets/new-event.png/"></a>
-<%end%>
 
 <table id="event-table">
   <!--<tr>

@@ -1,4 +1,5 @@
 class ResultsController < ApplicationController
+    before_filter :authenticate_user!, :except => [:show,:index]
   # GET /results
   # GET /results.json
   def index

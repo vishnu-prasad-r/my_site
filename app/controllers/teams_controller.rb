@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
-
+    before_filter :authenticate_user!, :except => [:show,:index]
   def index
     @teams = Team.page(params[:page]).all
 

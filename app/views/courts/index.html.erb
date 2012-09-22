@@ -1,4 +1,10 @@
 <h1>Courts</h1>
+<%if (can? :create, Court) %>
+<div class="search-div"> 
+			
+<button class="new_item_button" onclick="return TINY.box.show({url:'<%=new_court_url%>',close:true})">New Court</button>
+</div>
+<%end%>
 
 <table id="gradient-style">
 	<thead>
@@ -38,4 +44,4 @@
 
 <br />
 
-<%= link_to 'New Court', new_court_path %>
+<%#= link_to 'New Court', new_court_path %>

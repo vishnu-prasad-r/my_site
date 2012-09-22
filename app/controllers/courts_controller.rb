@@ -1,6 +1,7 @@
 class CourtsController < ApplicationController
   # GET /courts
   # GET /courts.json
+    before_filter :authenticate_user!, :except => [:show,:index]
   def index
     @courts = Court.all
 
@@ -27,7 +28,7 @@ class CourtsController < ApplicationController
     @court = Court.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html  { render "new", :layout=>false}
       format.json { render json: @court }
     end
   end

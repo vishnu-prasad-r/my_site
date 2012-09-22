@@ -1,16 +1,39 @@
 class PlayersController < ApplicationController
+    before_filter :authenticate_user!, :except => [:show,:index]
   helper_method :sort_column, :sort_direction
   # GET /players
   # GET /players.json
   def index
+    puts params[:division]
+    puts Division.select(:id)
+    #if (params[:division] && !Division.find(params[:division][:id].to_i).empty?)
+     # puts "Reached here"
+      #@players = Player.where(:division_id=>params[:division][:id].to_i).order(sort_column + ' ' + sort_direction).page(params[:page])
+    #else
+     # puts "Reached Else"
+     # @players = Player.order(sort_column + ' ' + sort_direction).page(params[:page])
+    #end
+    @hash= Hash.new
     
-    if (params[:division] && Division.all.collect(&:name).include?(params[:division][:name]))
-      @players = Player.send(params[:division][:name].downcase).order(sort_column + ' ' + sort_direction).page(params[:page])
-    else
-      @players = Player.order(sort_column + ' ' + sort_direction).page(params[:page])
+    if(params[:division] && params[:division][:id])
+     
+      if !Division.find_by_id(params[:division][:id].to_i).nil?
+        @hash.merge!({:division_id=>params[:division][:id].to_i})
+      end
+    end
+    if(params[:potluck])
+       @hash.merge!(:pot_luck=>to_boolean(params[:potluck]))
+    end
+    if(!params[:name].nil? && !params[:name].empty?)
+      @hash.merge!(:first_name=>params[:name])
     end
     
-
+    if(@hash.empty?)
+      @players = Player.order(sort_column + ' ' + sort_direction).page(params[:page])
+    else
+      @players = Player.where(@hash).order(sort_column + ' ' + sort_direction).page(params[:page])
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @players }
@@ -76,7 +99,7 @@ class PlayersController < ApplicationController
     @player = Player.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html  { render "new", :layout=>false}
       format.json { render json: @player }
     end
   end
