@@ -107,6 +107,10 @@ class PlayersController < ApplicationController
   # GET /players/1/edit
   def edit
     @player = Player.find(params[:id])
+      respond_to do |format|
+      format.html  { render "edit", :layout=>false}
+      
+    end
   end
 
   # POST /players

@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
-    before_filter :authenticate_user!, :except => [:show,:index]
+    before_filter :authenticate_user!#, :except => [:show,:index]
   def index
     @teams = Team.page(params[:page]).all
 
@@ -72,7 +72,7 @@ class TeamsController < ApplicationController
     @team = Team.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html  { render "new", :layout=>false}
       format.json { render json: @team }
     end
   end
@@ -80,6 +80,10 @@ class TeamsController < ApplicationController
   # GET /teams/1/edit
   def edit
     @team = Team.find(params[:id])
+      respond_to do |format|
+      format.html  { render "edit", :layout=>false}
+      
+    end
   end
 
   # POST /teams

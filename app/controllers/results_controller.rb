@@ -1,5 +1,5 @@
 class ResultsController < ApplicationController
-    before_filter :authenticate_user!, :except => [:show,:index]
+    before_filter :authenticate_user!#, :except => [:show,:index]
   # GET /results
   # GET /results.json
   def index
@@ -27,8 +27,8 @@ class ResultsController < ApplicationController
   def new
     @result = Result.new
 
-    respond_to do |format|
-      format.html # new.html.erb
+  respond_to do |format|
+      format.html  { render "new", :layout=>false}
       format.json { render json: @result }
     end
   end
@@ -36,6 +36,10 @@ class ResultsController < ApplicationController
   # GET /results/1/edit
   def edit
     @result = Result.find(params[:id])
+      respond_to do |format|
+      format.html  { render "edit", :layout=>false}
+      
+    end
   end
 
   # POST /results

@@ -1,5 +1,9 @@
 <h1>Teams</h1>
-
+<%if (can? :create, Team) %>
+<div class="search-div"> 
+<Button class="new_item_button" onClick = "return TINY.box.show({url:'<%=new_team_url%>',close:true})">New Team</Button>
+</div> 
+<%end%>
 <%= will_paginate @teams %>
 
 <table id="gradient-style">
@@ -21,7 +25,7 @@
 <tbody>
 
 <% @teams.each do |team| %>
-  <tr data-href="<%= edit_team_path(team) %>" class="<%= cycle("odd", "even") -%>">
+  <tr data-href="<%= team_path(team) %>" class="<%= cycle("odd", "even") -%>">
   	<td><%= team.division.name %></td>
     <td><%= team.playerone.Full_Name %></td>
     <td><%= team.playertwo.Full_Name %></td>
@@ -35,4 +39,4 @@
 
 <br />
 
-<%= link_to 'New Team', new_team_path %>
+<%#= link_to 'New Team', new_team_path %>

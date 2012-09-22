@@ -1,5 +1,9 @@
 <h1>Listing results</h1>
-
+<%if (can? :create, Result) %>
+<div class="search-div"> 
+<Button class="new_item_button" onClick = "return TINY.box.show({url:'<%=new_result_url%>',close:true})">Add Result</Button>
+</div> 
+<%end%>
 <%= will_paginate @results %>
 
 <table>
@@ -30,12 +34,11 @@
     <td><%= result.team1 %></td>
     <td><%= result.team2 %></td>
     <td><%= link_to 'Show', result %></td>
-    <td><%= link_to 'Edit', edit_result_path(result) %></td>
-    <td><%= link_to 'Destroy', result, confirm: 'Are you sure?', method: :delete %></td>
+    
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Result', new_result_path %>
+<%#= link_to 'New Result', new_result_path %>

@@ -28,7 +28,7 @@
 	</tfoot>
 <tbody>
 <% @fixtures.each do |fixture| %>
-  <tr data-href="<%= edit_fixture_path(fixture) %>" class="<%= cycle("odd", "even") -%>">
+  <tr data-href="<%= fixture_path(fixture) %>" class="<%= cycle("odd", "even") -%>">
   	<td><%= fixture.date %></td>
     <td><%= fixture.teamone.Team_Name %></td>
     <td><%= fixture.teamtwo.Team_Name %></td>

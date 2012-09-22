@@ -7,6 +7,7 @@ class Ability
     if(user.id==1)
     can :search, Player
     can :create,Player
+    can :edit,Player
     can :create,Court
     can :create,Event
     can :edit, Court
@@ -15,6 +16,8 @@ class Ability
     can :edit,Fixture
     can :edit,Team
     can :create,Team
+    can :create,Result
+    can :edit,Result
     end
     can :manage,User do |u|
     	u==user

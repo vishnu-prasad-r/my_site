@@ -26,7 +26,7 @@
 	</tfoot>
 	<tbody>
 <% @players.each do |player| %>
-  <tr data-href="<%= edit_player_path(player) %>" class="<%= cycle("odd", "even") -%>">
+  <tr data-href="<%= player_path(player) %>" class="<%= cycle("odd", "even") -%>">
     <td><%= player.first_name %></td>
     <td><%= player.last_name %></td>
     <td><%= player.Home_Phone %></td>
