@@ -4,11 +4,18 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user
     
+    if(user.id==1)
     can :search, Player
     can :create,Player
     can :create,Court
     can :create,Event
-    
+    can :edit, Court
+    can :edit,Event
+    can :create,Fixture
+    can :edit,Fixture
+    can :edit,Team
+    can :create,Team
+    end
     can :manage,User do |u|
     	u==user
     end

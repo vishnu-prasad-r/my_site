@@ -1,5 +1,9 @@
 <h1>Fixtures</h1>
-
+<%if (can? :create, Fixture) %>
+<div class="search-div"> 
+<Button class="new_item_button" onClick = "return TINY.box.show({url:'<%=new_fixture_url%>',close:true})">Create Fixture</Button>
+</div> 
+<%end%>
 <%= will_paginate @fixtures %>
 
 <table id="gradient-style">
@@ -42,4 +46,4 @@
 
 <br />
 
-<%= link_to 'New Fixture', new_fixture_path %>
+<%#= link_to 'New Fixture', new_fixture_path %>

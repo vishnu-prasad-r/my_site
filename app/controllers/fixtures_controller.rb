@@ -1,7 +1,7 @@
 class FixturesController < ApplicationController
   # GET /fixtures
   # GET /fixtures.json
-    before_filter :authenticate_user!, :except => [:show,:index]
+    before_filter :authenticate_user!#, :except => [:show,:index]
   def index
     @fixtures = Fixture.page(params[:page]).all
 
@@ -29,7 +29,7 @@ class FixturesController < ApplicationController
     @fixture = Fixture.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html  { render "new", :layout=>false}
       format.json { render json: @fixture }
     end
   end
@@ -37,6 +37,9 @@ class FixturesController < ApplicationController
   # GET /fixtures/1/edit
   def edit
     @fixture = Fixture.find(params[:id])
+    respond_to do |format|
+    format.html  { render "edit", :layout=>false}
+    end
   end
 
   # POST /fixtures

@@ -1,7 +1,7 @@
 class CourtsController < ApplicationController
   # GET /courts
   # GET /courts.json
-    before_filter :authenticate_user!, :except => [:show,:index]
+    before_filter :authenticate_user!#, :except => [:show,:index]
   def index
     @courts = Court.all
 
@@ -36,6 +36,9 @@ class CourtsController < ApplicationController
   # GET /courts/1/edit
   def edit
     @court = Court.find(params[:id])
+    respond_to do |format|
+    format.html  { render "edit", :layout=>false}
+    end
   end
 
   # POST /courts

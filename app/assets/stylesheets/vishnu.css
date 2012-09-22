@@ -76,4 +76,5 @@ padding: 3px;
 .search-div{
 	padding: 20px 20px 20px 100px;
 	background: #f0f7fc;
+	min-width: 600px;
 }

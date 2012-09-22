@@ -27,13 +27,14 @@
 	</tfoot>
 	<tbody>
 <% @courts.each do |court| %>
-  <tr data-href="<%= edit_court_path(court) %>">
+  <tr data-href="<%= court_path(court) %>">
     <td><%= court.court %></td>
     <td><%= court.lights %></td>
     <td><%= court.name %></td>
     <td><%= court.address %></td>
     <td><%= court.home %></td>
     <td><%= court.mobile %></td>
+    
 <!--   <td><%= link_to 'Show', court %></td>
     <td><%= link_to 'Edit', edit_court_path(court) %></td>
     <td><%= link_to 'Destroy', court, confirm: 'Are you sure?', method: :delete %></td> -->

@@ -37,6 +37,10 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+    respond_to do |format|
+      format.html  { render "edit", :layout=>false}
+      
+    end
   end
 
   # POST /events
