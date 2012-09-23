@@ -46,9 +46,10 @@ return true if string== true || string =~ (/(true|t|yes|y|1)$/i)
 return false if string== false || string.nil? || string =~ (/(false|f|no|n|0)$/i)
 raise ArgumentError.new("invalid value for Boolean: \"#{string}\"")
 end
- 
+
+@courtcount=0; 
 CSV.foreach("courts2.csv") do |row|
-  @courtcount=0;
+  
   a= Court.create({:court=>row[0],
      :lights=>to_boolean(row[1]),
       :name=>row[2],
@@ -59,3 +60,17 @@ CSV.foreach("courts2.csv") do |row|
   @courtcount=@courtcount+1;
 end
 puts "Total #{@courtcount.to_s} courts added to the database"
+
+@fixturecount=0;
+CSV.foreach("fixtures2.csv") do |row|
+  
+  a= Court.create(  {  
+    :court_id=>a[0],
+    :date=>a[1],
+    :division_id=>a[2],
+    :teamone_id=>a[3],
+    :teamtwo_id=>a[4]})
+  puts "Created fixture #{a.date}"
+  @fixturecount=@fixturecount+1;
+end
+puts "Total #{@fixturecount.to_s} fixtures imported into the database"

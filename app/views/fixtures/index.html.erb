@@ -2,6 +2,8 @@
 <%if (can? :create, Fixture) %>
 <div class="search-div"> 
 <Button class="new_item_button" onClick = "return TINY.box.show({url:'<%=new_fixture_url%>',close:true})">Create Fixture</Button>
+<Button class="new_item_button" onClick = "">Auto-Generate Fixtures</Button>
+<Button class="new_item_button" onClick = "">Send to Players</Button>
 </div> 
 <%end%>
 <%= will_paginate @fixtures %>

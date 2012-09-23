@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.1'
 gem "paperclip", "~> 3.0"
-
+gem 'spreadsheet'
+gem 'delayed_job_active_record'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 #gem 'mysql2', :platform => '-x86-mingw32'

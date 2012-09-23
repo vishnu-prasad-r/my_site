@@ -4,8 +4,7 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    puts params[:division]
-    puts Division.select(:id)
+    
     #if (params[:division] && !Division.find(params[:division][:id].to_i).empty?)
      # puts "Reached here"
       #@players = Player.where(:division_id=>params[:division][:id].to_i).order(sort_column + ' ' + sort_direction).page(params[:page])
@@ -21,8 +20,8 @@ class PlayersController < ApplicationController
         @hash.merge!({:division_id=>params[:division][:id].to_i})
       end
     end
-    if(params[:potluck])
-       @hash.merge!(:pot_luck=>to_boolean(params[:potluck]))
+    if(params[:pooled])
+       @hash.merge!(:pot_luck=>toboolean(params[:pooled]))
     end
     if(!params[:name].nil? && !params[:name].empty?)
       @hash.merge!(:first_name=>params[:name])
@@ -156,6 +155,22 @@ class PlayersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def generatecontactsheet
+    @players=Player.all
+    attachmentfile= createcontactsheet()
+    @players.each do |player|
+      if(!player.email.nil?)
+        Postman.delay.sendcontactsheet(player,attachmentfile)
+        puts "Queued mail for #{player.email}"
+      end
+    end
+    send_data attachmentfile, :type => "application/vnd.ms-excel", :filename => "contactsheet.xls"
+    
+  end
+  def mailcontactsheet
+    
+  end
   private
     
     def sort_column
@@ -166,4 +181,27 @@ class PlayersController < ApplicationController
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
   
+    def createcontactsheet
+      book = Spreadsheet::Workbook.new
+      sheet1 = book.create_worksheet  :name => 'Contact info'
+      bold = Spreadsheet::Format.new :weight => :bold
+      6.times do |col| sheet1.row(0).set_format(col,bold) end
+      sheet1.row(0).replace ["First Name","Last Name","Home Phone","Work Phone","Email","Address"]
+      @i=1;
+      @players= Player.all
+      @players.each do |player|
+        row=sheet1.row(@i)
+        row[0]=player.first_name
+        row[1]=player.last_name
+        row[2]=player.Home_Phone
+        row[3]=player.Work_Phone
+        row[4]=player.email
+        #row[5]=""+player.Address1+"\n"+player.Address2+"\n"+player.Address3+"\n"+player.Address4+"\n"+player.Address5+"\n"
+        row[5]=(if player.Address1 then player.Address1 else "" end  ) + (if player.Address2 then " ,\n" + player.Address2 else "" end  )+ (if player.Address3 then " ,\n" + player.Address3 else "" end  )+ (if player.Address4 then " ,\n" + player.Address4 else "" end  )+ (if player.Address5 then " ,\n" + player.Address5 else "" end  )
+        @i=@i+1
+      end
+      blob = StringIO.new("")
+      book.write blob
+      blob.string
+    end
 end

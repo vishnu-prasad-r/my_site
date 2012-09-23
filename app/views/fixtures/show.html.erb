@@ -2,7 +2,7 @@
 <%if (can? :edit, Fixture) %>
 <div class="search-div"> 
 	<%= link_to '', @fixture, confirm: 'Are you sure you want to delete this fixture?', method: :delete  ,:id=>"deletelink"%>
-<Button class="new_item_button" onClick = "return TINY.box.show({url:'<%=edit_event_path(@fixture)%>',close:true})">Modify</Button>
+<Button class="new_item_button" onClick = "return TINY.box.show({url:'<%=edit_fixture_path(@fixture)%>',close:true})">Modify</Button>
 <button class="new_item_button" onclick="document.getElementById('deletelink').click()">Delete</button>
 </div> 
 <%#= link_to 'Edit', edit_event_path(@event) %> 

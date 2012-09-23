@@ -26,6 +26,7 @@ devise_for :users
         get 'div2'
         get 'div3'
         get 'div4'
+        get 'generatecontactsheet'
   end
 end
   resources :results
