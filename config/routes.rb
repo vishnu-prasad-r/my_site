@@ -41,8 +41,11 @@ end
       end
   end
 
-  resources :fixtures
-
+  resources :fixtures do
+      collection do
+        get 'sendfixtures'
+      end
+      end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -85,4 +85,82 @@ class FixturesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def sendfixtures
+    @fixtures= Fixture.where(:date => (Time.now.to_date)..(1.year.from_now.to_date))
+    
+    #-----Dealing with Div1 fixtures
+    5.times do |div|
+      divfixtures=@fixtures.where(:division_id=>(div+1))
+      divplayers=Player.where(:division_id=>(div+1))
+      divsheet= generatefixture(divfixtures)
+      emailfixture(divsheet,divplayers)
+    end
+    render :inline=> "Fixtures information for #{@fixtures.count} fictures in next one year will be soon mailed to players"
+    #div1fixtures= @fixtures.where(:division_id=>1)
+    #div1players=Player.where(:division_id=>1)
+    #div1sheet= generatefixture(div1fixtures)
+    #emailfixture(div1sheet,div1players)
+    
+    #div2fixtures= @fixtures.where(:division_id=>2)
+    #div2players=Player.where(:division_id=>2)
+    #div2sheet= generatefixture(div2fixtures)
+    #emailfixture(div2sheet,div2players)
+    
+    #div3fixtures= @fixtures.where(:division_id=>3)
+    #div3players=Player.where(:division_id=>3)
+    #div3sheet= generatefixture(div3fixtures)
+    #emailfixture(div3sheet,div3players)
+    
+    #div4fixtures= @fixtures.where(:division_id=>4)
+    #div4players=Player.where(:division_id=>4)
+    #div4sheet= generatefixture(div4fixtures)
+    #emailfixture(div4sheet,div4players)
+    
+    #premierfixtures=@fixtures.where(:division_id=>5)
+    #premierplayers=Player.where(:division_id=>5)
+    #premiersheet= generatefixture(premierfixtures)
+    #emailfixture(premiersheet,premierplayers)
+  end
+  
+  
+  
+  
+  private
+  
+  
+  
+  def generatefixture(fixtures)
+      book = Spreadsheet::Workbook.new
+      sheet1 = book.create_worksheet  :name => 'Fixtures'
+      bold = Spreadsheet::Format.new :weight => :bold
+      6.times do |col| sheet1.row(0).set_format(col,bold) end
+      sheet1.row(0).replace ["Date","Team One","Team Two","Division","Court"]
+      @i=1;
+      
+      fixtures.each do |fixture|
+        row=sheet1.row(@i)
+        row[0]=fixture.date
+        row[1]=fixture.teamone.Team_Name
+        row[2]=fixture.teamtwo.Team_Name
+        row[3]=fixture.division.name
+        row[4]=fixture.court.try(:court)
+        @i=@i+1
+      end
+      blob = StringIO.new("")
+      book.write blob
+      blob.string
+  end
+  
+  def emailfixture(sheet,players)
+    players.each do |p|
+      if(!p.email.nil?)
+        email=p.email.strip
+        if !(email.gsub!(/\s+/, "").nil?)
+          Postman.delay.sendfixtures(p.first_name,email,sheet)
+        end
+      end
+    end
+  end
+  
 end

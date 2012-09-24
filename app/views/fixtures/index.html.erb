@@ -1,11 +1,21 @@
 <h1>Fixtures</h1>
-<%if (can? :create, Fixture) %>
+
 <div class="search-div"> 
+<%if (can? :create, Fixture) %>
+
 <Button class="new_item_button" onClick = "return TINY.box.show({url:'<%=new_fixture_url%>',close:true})">Create Fixture</Button>
 <Button class="new_item_button" onClick = "">Auto-Generate Fixtures</Button>
-<Button class="new_item_button" onClick = "">Send to Players</Button>
-</div> 
+<Button class="new_item_button" onClick = "return TINY.box.show({url:'<%=sendfixtures_fixtures_url%>',close:true})">Send to Players</Button>
+</br>
+</br>
 <%end%>
+<%=form_for(:fixture , :url=>fixtures_url) do |f|%>
+Division <%= f.collection_select :division_id, Division.all, :id, :name, include_blank: true %>
+Team<%=f.grouped_collection_select :teamone_id, Division.order("created_at ASC"), :teams, :name, :id, :Team_Name, include_blank: true%>
+<%=f.submit "Filter"%>
+<%end%>
+</div> 
+
 <%= will_paginate @fixtures %>
 
 <table id="gradient-style">
