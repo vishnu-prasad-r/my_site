@@ -27,7 +27,7 @@ CSV.foreach("players2.csv") do |row|
       :Postal_Code=>row[9],
        :Home_Phone=>row[10],
        :Work_Phone=>row[11],
-       :division=> if row[12].to_i==0 then  nil else Division.find(((row[12].to_i)+6)%5)) end,
+       :division=> if row[12].to_i==0 then  nil else Division.find(((row[12].to_i)+6)%5) end,
 
 
       :pot_luck=>row[13],
