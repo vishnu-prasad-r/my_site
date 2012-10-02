@@ -54,6 +54,9 @@
 					</li>
 					<li><%= link_to "Fixtures", fixtures_path ,:id => "menu2" %></li>
 					<li><%= link_to "Events", events_path ,:id => "menu2" %></li>
+
+						
+
 					 <% if signed_in? %>
 					<li><%= link_to "Log out", destroy_user_session_path, :method => :delete %>
 					<%else%>
@@ -67,9 +70,11 @@
 						<li><%= link_to "Division 2", new_user_session_path, :class => "first-item", :id => "menu54" %></li>
 						<li><%= link_to "Division 3", new_user_session_path, :class => "first-item", :id => "menu54" %></li>
 						<li><%= link_to "Division 4", new_user_session_path, :class => "first-item", :id => "menu54" %></li>
+						<li><%= link_to "Manage Site", root_url+"admin" ,:id => "menu2" %></li>
 					</ul>
 					<%end%>
 			</li>
+			
 		</ul>
 	</div>
 </div>

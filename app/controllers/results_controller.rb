@@ -1,9 +1,10 @@
 class ResultsController < ApplicationController
-    before_filter :authenticate_user!#, :except => [:show,:index]
+    before_filter :authenticate_user!, :except => [:show,:index]
   # GET /results
   # GET /results.json
   def index
-    @results = Result.page(params[:page]).all
+    
+    @results = Result.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,7 +27,7 @@ class ResultsController < ApplicationController
   # GET /results/new.json
   def new
     @result = Result.new
-
+    @fixtures= Fixture.where(:date => (1.year.ago.to_date)..(Time.now.to_date)).order("date DESC")
   respond_to do |format|
       format.html  { render "new", :layout=>false}
       format.json { render json: @result }
@@ -35,6 +36,7 @@ class ResultsController < ApplicationController
 
   # GET /results/1/edit
   def edit
+    @fixtures= Fixture.where(:date => (1.year.ago.to_date)..(Time.now.to_date)).order("date DESC")
     @result = Result.find(params[:id])
       respond_to do |format|
       format.html  { render "edit", :layout=>false}
@@ -45,8 +47,16 @@ class ResultsController < ApplicationController
   # POST /results
   # POST /results.json
   def create
+    
+    fixture=Fixture.find(params[:result][:fixture_id])
+    params[:result][:fixture_id]=nil
     @result = Result.new(params[:result])
-
+   if(fixture.date<=Time.now.to_date)
+    @result.teamone=fixture.teamone.Team_Name
+    @result.teamtwo=fixture.teamtwo.Team_Name
+    @result.court=fixture.court.try(:court)
+    @result.date=fixture.date
+    @result.fixture=fixture
     respond_to do |format|
       if @result.save
         format.html { redirect_to @result, notice: 'Result was successfully created.' }
@@ -56,6 +66,9 @@ class ResultsController < ApplicationController
         format.json { render json: @result.errors, status: :unprocessable_entity }
       end
     end
+   else
+     render :inline=>"Invalid fixture. Are you attempting to set result for a future fixture?"
+   end
   end
 
   # PUT /results/1

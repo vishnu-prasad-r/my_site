@@ -18,11 +18,12 @@ class Ability
     can :create,Team
     can :create,Result
     can :edit,Result
+    can :manage,:Members
     end
     can :manage,User do |u|
     	u==user
     end
-    
+
     unless user.password.nil?
       can :view,:rules
     end 

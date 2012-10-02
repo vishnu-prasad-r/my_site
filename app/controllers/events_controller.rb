@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show,:index]
   #load_and_authorize_resource
   def index
-    @events = Event.all
+    @events = Event.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

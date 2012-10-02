@@ -3,7 +3,7 @@
 <%if (can? :search,Player)%>
 <%=render 'playersearch' %>
 <%end%>
-<%= will_paginate @players %>
+<%= paginate @players %>
 
 <table id="gradient-style">
 	<thead>

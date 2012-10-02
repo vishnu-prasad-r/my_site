@@ -1,7 +1,12 @@
 class CreateResults < ActiveRecord::Migration
   def change
     create_table :results do |t|
-      t.integer :fixture
+      t.integer :fixture_id
+      t.string   :teamone
+      t.string   :teamtwo
+      t.string   :court
+      t.date     :date
+      
       t.integer :set1team1
       t.integer :set1team2
       t.integer :set2team1

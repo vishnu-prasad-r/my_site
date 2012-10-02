@@ -3,7 +3,7 @@ class FixturesController < ApplicationController
   # GET /fixtures.json
     before_filter :authenticate_user!#, :except => [:show,:index]
   def index
-    @fixtures = Fixture.page(params[:page]).all
+    @fixtures = Fixture.page(params[:page])
 
 
     respond_to do |format|
@@ -123,7 +123,84 @@ class FixturesController < ApplicationController
     #emailfixture(premiersheet,premierplayers)
   end
   
+  def autogen
+    
+    #obtaining next 15 wednessdays
+    @days=Array.new
+    lastday= date_of_next("Wednesday")
+    @days.push(lastday)
+    
+    14.times do |day|
+      lastday=lastday.next_week.next_day(4)
+      @days.push(lastday)
+    end
+    
+    #shuffling the dates
+    @days.shuffle!
+    
+    #Fixtures for first 3 divisions
+    3.times do |i|
+      teams=Team.where(:division_id=>(i+1))
+      @div=Division.find(i+1)
+      @j=0;
+      teams.combination(2).to_a.each do |fix|
+      fixture=Fixture.new
+      fixture.teamone=fix[0]
+      fixture.teamtwo=fix[1]
+      fixture.division=@div
+      
+      @j=@j+1
+      @j=(@j % @days.length)
+      fixture.date=@days[@j]
+      
+      fixture.save
+    end
+      
+    end
+    #fixtures for division 4 and premier
+    
+    2.times do|i|
+      @teams=Team.where(:division_id=>(i+4))
+      @div=Division.find(i+4)
+      @j=0
+      combinations=@teams.map {|x| @teams.map {|y| 
+        if x!=y then
+         fixture=Fixture.new
+         fixture.division=@div
+         fixture.teamone=x
+         fixture.teamtwo=y
+         
+         
+         @j=@j+1
+         @j=(@j % @days.length)
+         fixture.date=@days[@j]
+         
+         fixture.save
+         fixture
+        end
+         } }.flatten
+    end
+     
+    @fixtures = Fixture.page(params[:page]).all
+    render :action=>"index"
+    
+  end
   
+  
+    def remove
+      if(params[:confirm] && params[:confirm]=="yes")
+        
+      @fixture= Fixture.where(:date => (Time.now.to_date)..(1.year.from_now.to_date)).delete_all
+        respond_to do |format|
+        format.html { redirect_to fixtures_url }
+        format.json { head :no_content }
+       end
+       
+      else
+       @count= Fixture.where(:date => (Time.now.to_date)..(1.year.from_now.to_date)).count
+       render :action=>"remove" , :layout=>false
+      end
+    end
   
   
   private
@@ -162,5 +239,13 @@ class FixturesController < ApplicationController
       end
     end
   end
+  
+  def date_of_next(day)
+  date  = Date.parse(day)
+  delta = date > Date.today ? 0 : 7
+  date + delta
+  end
+  
+
   
 end

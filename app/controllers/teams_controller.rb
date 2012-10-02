@@ -3,7 +3,7 @@ class TeamsController < ApplicationController
   # GET /teams.json
     before_filter :authenticate_user!#, :except => [:show,:index]
   def index
-    @teams = Team.page(params[:page]).all
+    @teams = Team.page(params[:page])
 
 
     respond_to do |format|

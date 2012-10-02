@@ -9,7 +9,27 @@
 <%end%>
 <p>
   <b>Fixture:</b>
-  <%= @result.fixture %>
+  <%= link_to @result.fixture.try(:id) , fixture_url(@result.fixture)%>
+</p>
+
+<p>
+  <b>Court:</b>
+  <%= @result.court %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @result.date %>
+</p>
+
+<p>
+  <b>Team1:</b>
+  <%= @result.teamone %>
+</p>
+
+<p>
+  <b>Team2:</b>
+  <%= @result.teamtwo %>
 </p>
 
 <p>
@@ -42,15 +62,6 @@
   <%= @result.set3team2 %>
 </p>
 
-<p>
-  <b>Team1:</b>
-  <%= @result.team1 %>
-</p>
-
-<p>
-  <b>Team2:</b>
-  <%= @result.team2 %>
-</p>
 
 
 <%#= link_to 'Edit', edit_result_path(@result) %> 

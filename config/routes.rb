@@ -1,4 +1,8 @@
 TWL::Application.routes.draw do
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
 #devise_for :users,  :controllers => { :registrations => "users/registrations" }
 devise_for :users
   resources :events
@@ -44,6 +48,8 @@ end
   resources :fixtures do
       collection do
         get 'sendfixtures'
+        get 'autogen'
+        get 'remove'
       end
       end
   # The priority is based upon order of creation:

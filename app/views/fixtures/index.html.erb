@@ -4,8 +4,9 @@
 <%if (can? :create, Fixture) %>
 
 <Button class="new_item_button" onClick = "return TINY.box.show({url:'<%=new_fixture_url%>',close:true})">Create Fixture</Button>
-<Button class="new_item_button" onClick = "">Auto-Generate Fixtures</Button>
+<Button class="new_item_button" onClick = "window.location.href='<%=autogen_fixtures_url%>'">Auto-Generate Fixtures</Button>
 <Button class="new_item_button" onClick = "return TINY.box.show({url:'<%=sendfixtures_fixtures_url%>',close:true})">Send to Players</Button>
+<Button class="new_item_button" onClick = "return TINY.box.show({url:'<%=remove_fixtures_url%>',close:true})">Delete all future fixtures</Button>
 </br>
 </br>
 <%end%>
@@ -16,7 +17,7 @@ Team<%=f.grouped_collection_select :teamone_id, Division.order("created_at ASC")
 <%end%>
 </div> 
 
-<%= will_paginate @fixtures %>
+<%= paginate @fixtures %>
 
 <table id="gradient-style">
 	<thead>

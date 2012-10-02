@@ -3,7 +3,7 @@ class CourtsController < ApplicationController
   # GET /courts.json
     before_filter :authenticate_user!#, :except => [:show,:index]
   def index
-    @courts = Court.all
+    @courts = Court.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

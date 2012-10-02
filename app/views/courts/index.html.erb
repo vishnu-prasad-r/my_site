@@ -5,7 +5,7 @@
 <button class="new_item_button" onclick="return TINY.box.show({url:'<%=new_court_url%>',close:true})">New Court</button>
 </div>
 <%end%>
-
+<%= paginate @courts %>
 <table id="gradient-style">
 	<thead>
 		  <tr>

@@ -4,27 +4,45 @@
 <Button class="new_item_button" onClick = "return TINY.box.show({url:'<%=new_result_url%>',close:true})">Add Result</Button>
 </div> 
 <%end%>
-<%= will_paginate @results %>
+<%= paginate @results %>
 
-<table>
+
+<table id="gradient-style">
+	<thead>
   <tr>
-    <th>Fixture</th>
-    <th>Set1team1</th>
-    <th>Set1team2</th>
-    <th>Set2team1</th>
-    <th>Set2team2</th>
-    <th>Set3team1</th>
-    <th>Set3team2</th>
-    <th>Team1</th>
-    <th>Team2</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  	<th scope="col">Date</th>
+  	<th scope="col">Court</th>
+    <th scope="col">Division</th>
+	<th scope="col">Fixture</th>
 
+
+    <th scope="col">S1 T1</th>
+    <th scope="col">S1 T2</th>
+    <th scope="col">S2 T1</th>
+    <th scope="col">S2 T2</th>
+    <th scope="col">S3 T1</th>
+    <th scope="col">S3 T2</th>
+    <th scope="col">Team1</th>
+    <th scope="col">Team2</th>
+    <th scope="col">Details...</th>
+    
+<!--    <th></th>
+    <th></th>
+    <th></th> -->
+  </tr>
+  </thead>
+  	<tfoot>
+    	<tr>
+        	<td colspan="5">Give background color to the table cells to achieve seamless transition</td>
+        </tr>
+	</tfoot>
+<tbody>
 <% @results.each do |result| %>
   <tr>
-    <td><%= result.fixture %></td>
+  	<td><%= result.date %></td>
+    <td><%= result.court %></td>
+    <td><%= result.fixture.try(:division).try(:name) %></td>
+    <td><%= link_to result.fixture.try(:id) , fixture_url(result.fixture)%></td>
     <td><%= result.set1team1 %></td>
     <td><%= result.set1team2 %></td>
     <td><%= result.set2team1 %></td>
@@ -33,10 +51,11 @@
     <td><%= result.set3team2 %></td>
     <td><%= result.team1 %></td>
     <td><%= result.team2 %></td>
-    <td><%= link_to 'Show', result %></td>
+    <td><%= link_to 'Details', result %></td>
     
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />

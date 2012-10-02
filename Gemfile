@@ -4,6 +4,8 @@ gem 'rails', '3.2.1'
 gem "paperclip", "~> 3.0"
 gem 'spreadsheet'
 gem 'delayed_job_active_record'
+#gem "will_paginate", "3.0.pre2"
+#gem 'activeadmin'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 #gem 'mysql2', :platform => '-x86-mingw32'
@@ -12,7 +14,10 @@ gem 'sqlite3', :group => :development
 gem 'thin', :group => :development
 gem "nifty-generators", :group => :development
 #gem 'bundler', '~> 1.0.22' 
-gem 'will_paginate', '~> 3.0.3'
+#gem 'will_paginate', '~> 3.0.3'
+gem 'kaminari'
+gem 'activeadmin'
+#gem "will_paginate", "3.0.pre2" #newer version will cause conflict
 gem 'pg', :group => :production
 
 # Gems used only for assets and not required

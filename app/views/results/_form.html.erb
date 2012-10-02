@@ -12,8 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :fixture %><br />
-    <%= f.number_field :fixture %>
+    Fixture
+ 	<%=select("result", "fixture_id", @fixtures.collect {|p| [ "#{p.date} #{p.court.try(:court)}", p.id ] }, {:include_blank => 'None'})%>
+
   </div>
   <div class="field">
     <%= f.label :set1team1 %><br />
@@ -39,14 +40,14 @@
     <%= f.label :set3team2 %><br />
     <%= f.number_field :set3team2 %>
   </div>
-  <div class="field">
-    <%= f.label :team1 %><br />
-    <%= f.number_field :team1 %>
+  <!--<div class="field">
+    <%#= f.label :team1 %><br />
+    <%#= f.number_field :team1 %>
   </div>
   <div class="field">
-    <%= f.label :team2 %><br />
-    <%= f.number_field :team2 %>
-  </div>
+    <%#= f.label :team2 %><br />
+    <%#= f.number_field :team2 %>
+  </div> -->
   <div class="actions">
     <%= f.submit %>
   </div>
