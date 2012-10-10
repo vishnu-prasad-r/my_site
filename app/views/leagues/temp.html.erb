@@ -1,0 +1,36 @@
+<div class="CSSTableGenerator">
+<table>
+	<tr>
+<td><%=@division.name%></td>
+<td>Matches Played</td>
+<td>Games Won</td>
+<td>Sets Won</td>
+<td>Total Score</td>
+
+</tr>
+<%@teams.each do |t|%>
+<%if t.draw>0%>
+<tr><td>
+	
+	<%= link_to "#{t.playerone.try(:Full_Name)} & #{t.playertwo.try(:Full_Name)}" ,(showteam_leagues_url + "?id=#{t.id}")%>
+	</td>
+	<td>
+	<%= t.draw%>
+	</td>
+	<td>
+	<%=t.won%>
+	</td>
+
+	<td>
+	<%=t.lost%>
+	</td>
+	<td>
+	<%=t.score%>
+	</td>
+</tr>
+<%end%>
+<%end%>
+</table>
+</div>
+<br/>
+<br/>

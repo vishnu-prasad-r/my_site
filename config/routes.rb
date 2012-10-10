@@ -1,4 +1,11 @@
 TWL::Application.routes.draw do
+  resources :leagues do
+    collection do
+        get 'showteam'
+
+      end
+  end
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config

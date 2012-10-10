@@ -57,6 +57,8 @@ class ResultsController < ApplicationController
     @result.court=fixture.court.try(:court)
     @result.date=fixture.date
     @result.fixture=fixture
+    @result.team1=fixture.teamone
+    @result.team2=fixture.teamtwo
     respond_to do |format|
       if @result.save
         format.html { redirect_to @result, notice: 'Result was successfully created.' }

@@ -3,6 +3,6 @@ class Player < ActiveRecord::Base
     "#{self.first_name} #{self.last_name}"
  end
  belongs_to :division
- 
+
 
 end

@@ -1,0 +1,18 @@
+
+
+
+<%=paginate @leagues%>
+<% @leagues.each do |league| %>
+
+  	<h1 style="text-align:center;">
+    Tennis Widow League <%= league.year %> <p/>Final Results
+    </h1>
+    <%= league.result.html_safe %>
+    <%= link_to 'Delete this result', league, confirm: 'Are you sure?', method: :delete %>
+
+<% end %>
+
+
+
+<%= link_to 'New League', new_league_path %>
+

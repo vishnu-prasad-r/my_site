@@ -1,0 +1,80 @@
+<%= paginate @results ,:params =>{:id=>@t.id} %>
+
+<div class="CSSTableGenerator">
+<table  style="width:100%;">
+	<thead>
+     <tr>
+  	   <th scope="col">Team: <%="#{@t.playerone.try(:Full_Name)} & #{@t.playertwo.try(:Full_Name)}"%></th>
+     </tr>
+    </thead>
+    
+    <!---------------------------Main table1 raw- footer-------------------->
+  	<tfoot>
+    	<tr>
+          <td colspan="5">Tennis Widows League <%="#{@results.first.date} to #{@results.last.date}"%></td>
+        </tr>
+	</tfoot>
+	
+	
+	<tbody>
+	  <% @results.each do |result| %>
+     <tr>
+     	    <!---------------------------Main table1 raw-1-------------------->
+  	   <td>
+  	   		    <!---------------------------Main table1 raw-1 column1-------------------->
+  		<table style="width:100%;"><tr>
+  			<td style="text-align: center; ">On: <%= result.date.strftime('%a %d %b %Y') %>
+   			    At: <%= result.court %> 
+    		 
+              </tr>
+         </table>
+      </td>
+          <!---------------------------Main table1 raw-2-------------------->
+   </tr>
+   <tr>
+     <td>
+     	<table style="width:100%;"><tr>
+   				<th style="text-align: center; "><%= result.teamone %></th>
+    			<th style="text-align: center ; "><%= result.teamtwo %></th>
+    		   </tr>
+    		    
+        </table>
+     </td>
+   </tr>
+   
+   
+   
+   <tr>
+      				<td>
+      					<table style="width:100%;"><tr>
+    							<th style="text-align: center ; " ><%= result.set1team1 %></th>
+    							<th style="text-align: center ; "><%= result.set2team1 %></th>
+    							<th style="text-align: center ; "><%= result.set3team1 %></th>
+    							
+							  </tr>
+					  </table>
+					</td>
+					<td>
+						<table style="width:100%;"><tr>
+    						
+    							<th style="text-align: center ; "><%= result.set1team2 %></th>
+    							
+    							<th style="text-align: center ; "><%= result.set2team2 %></th>
+    							
+    							<th style="text-align: center ; "><%= result.set3team2 %></th>
+							  </tr>
+					  </table>
+					</td>
+    			</tr>	
+   
+   
+   
+    <tr>
+    <td></br></td>
+    
+  </tr>
+<% end %>
+</tbody>
+</table>
+</div>
+<br />

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  year: 2012-10-03
+  result: MyText
+  dirty: false
+
+two:
+  year: 2012-10-03
+  result: MyText
+  dirty: false

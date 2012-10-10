@@ -7,28 +7,11 @@
 <%= paginate @results %>
 
 
-<table id="gradient-style">
+<table id="gradient-style" style="width:100%;">
 	<thead>
   <tr>
-  	<th scope="col">Date</th>
-  	<th scope="col">Court</th>
-    <th scope="col">Division</th>
-	<th scope="col">Fixture</th>
+  	<th scope="col">Results</th>
 
-
-    <th scope="col">S1 T1</th>
-    <th scope="col">S1 T2</th>
-    <th scope="col">S2 T1</th>
-    <th scope="col">S2 T2</th>
-    <th scope="col">S3 T1</th>
-    <th scope="col">S3 T2</th>
-    <th scope="col">Team1</th>
-    <th scope="col">Team2</th>
-    <th scope="col">Details...</th>
-    
-<!--    <th></th>
-    <th></th>
-    <th></th> -->
   </tr>
   </thead>
   	<tfoot>
@@ -39,18 +22,48 @@
 <tbody>
 <% @results.each do |result| %>
   <tr>
-  	<td><%= result.date %></td>
-    <td><%= result.court %></td>
-    <td><%= result.fixture.try(:division).try(:name) %></td>
-    <td><%= link_to result.fixture.try(:id) , fixture_url(result.fixture)%></td>
-    <td><%= result.set1team1 %></td>
-    <td><%= result.set1team2 %></td>
-    <td><%= result.set2team1 %></td>
-    <td><%= result.set2team2 %></td>
-    <td><%= result.set3team1 %></td>
-    <td><%= result.set3team2 %></td>
-    <td><%= result.team1 %></td>
-    <td><%= result.team2 %></td>
+  	<td>
+  		<table style="width:100%;"><tr>
+  			<td style="text-align: center; color:green">On: <%= result.date.strftime('%a %d %b %Y') %>
+   			    At: <%= result.court %> 
+    		 Division: <%= result.fixture.try(:division).try(:name) %> 
+   			 Fixture: <%= link_to result.fixture.try(:id) , fixture_url(result.fixture)%></td>
+              </tr>
+         </table>
+     </td>
+   </tr>
+   <tr>
+     <td>
+     	<table style="width:100%;"><tr>
+   				<td style="text-align: center; color:red"><%= result.teamone %></td>
+    			<td style="text-align: center ; color:red"><%= result.teamtwo %></td>
+    		   </tr>
+    		    
+        </table>
+     </td>
+   </tr>
+   
+   
+   
+   <tr>
+      				<td>
+      					<table style="width:100%;"><tr>
+    							<td style="text-align: center ; color:yellow; font-weight:900;" ><%= result.set1team1 %></td>
+    							<td style="text-align: center ; color:#CC3300; font-weight:900;"><%= result.set2team1 %></td>
+    							<td style="text-align: center ; color:pink; font-weight:900;"><%= result.set3team1 %></td>
+    							<td style="text-align: center ; color:yellow;font-weight:900;"><%= result.set1team2 %></td>
+    							
+    							<td style="text-align: center ; color:#CC3300;font-weight:900;"><%= result.set2team2 %></td>
+    							
+    							<td style="text-align: center ; color:pink;font-weight:900;"><%= result.set3team2 %></td>
+							  </tr>
+					  </table>
+					</td>
+    			</tr>	
+   
+   
+   
+    <tr>
     <td><%= link_to 'Details', result %></td>
     
   </tr>

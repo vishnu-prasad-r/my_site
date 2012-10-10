@@ -1,0 +1,63 @@
+<%= paginate @results ,:params =>{:id=>@t.id} %>
+
+<div class="CSSTableGenerator">
+<table  style="width:100%;">
+
+     
+
+    
+    <!---------------------------Main table1 raw- footer-------------------->
+
+     <tr>
+  	   <th scope="col" colspan="6">Team: <%="#{@t.playerone.try(:Full_Name)} & #{@t.playertwo.try(:Full_Name)}"%></th>
+     </tr>
+
+  	<tfoot>
+    	<tr>
+          <td colspan="6">Tennis Widows League <%="#{@results.first.date} to #{@results.last.date}"%></td>
+        </tr>
+	</tfoot>
+	
+	
+   
+
+	  <% @results.each do |result| %>
+	  
+     <tr>
+  		<td  colspan="6" style="text-align: center; font-size:14px;font-family:Arial;font-weight:bold;color:#ffffff;" class="matchtime">On: <%= result.date.strftime('%a %d %b %Y') %>
+   			    At: <%= result.court %> 
+    	 </td>
+     </tr>
+     
+ 
+   	 <tr>
+       <td colspan="3" style="text-align: center; "><%= result.teamone %></td>
+       <td  colspan="3" style="text-align: center; "><%= result.teamtwo %></td>
+     </tr>
+    		    
+    		    
+      <tr>
+   			
+    	<td  style="text-align: center; "><%= result.set1team1 %></td>
+    	<td style="text-align: center; "s><%= result.set2team1 %></td>
+    	<td style="text-align: center; "><%= result.set3team1 %></td>
+
+    	<td style="text-align: center; "><%= result.set1team2 %></td>
+    							
+    	<td style="text-align: center; "><%= result.set2team2 %></td>
+    							
+    	<td style="text-align: center; "><%= result.set3team2 %></td>
+						
+       </tr>	
+   
+   
+   
+    <tr>
+    <td colspan="6">&nbsp;</td>
+    
+  </tr>
+<% end %>
+
+</table>
+</div>
+<br />

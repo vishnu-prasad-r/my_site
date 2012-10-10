@@ -181,7 +181,7 @@ class FixturesController < ApplicationController
          } }.flatten
     end
      
-    @fixtures = Fixture.page(params[:page]).all
+    @fixtures = Fixture.page(params[:page])
     render :action=>"index"
     
   end

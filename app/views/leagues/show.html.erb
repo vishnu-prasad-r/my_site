@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Year:</b>
+  <%= @league.try(:year) %>
+</p>
+
+<p>
+  <b>Result:</b>
+  <%= @league.result %>
+</p>
+
+<p>
+  <b>Dirty:</b>
+  <%= @league.try(:dirty) %>
+</p>
+
+
+<%= link_to 'Edit', edit_league_path(@league) %> |
+<%= link_to 'Back', leagues_path %>
