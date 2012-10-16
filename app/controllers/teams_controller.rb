@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
   end
   
   def premier
-    @teams = Team.where("division_id = ?", "5").page(params[:page])
+    @teams = Team.where("division_id = ?", "1").page(params[:page])
     #Team.find (:all, :conditions => ['division_id < ?', ""], :order => 'start_date')
         respond_to do |format|
       format.html { render :template => "teams/index.html.erb" }# index.html.erb
@@ -21,7 +21,7 @@ class TeamsController < ApplicationController
     end
   end
       def div1
-    @teams = Team.where("division_id = ?", "1").page(params[:page])
+    @teams = Team.where("division_id = ?", "2").page(params[:page])
     #Team.find (:all, :conditions => ['division_id < ?', ""], :order => 'start_date')
         respond_to do |format|
           format.html { render :template => "teams/index.html.erb" }# index.html.erb
@@ -30,7 +30,7 @@ class TeamsController < ApplicationController
       end
     
       def div2
-    @teams = Team.where("division_id = ?", "2").page(params[:page])
+    @teams = Team.where("division_id = ?", "3").page(params[:page])
     #Team.find (:all, :conditions => ['division_id < ?', ""], :order => 'start_date')
         respond_to do |format|
           format.html { render :template => "teams/index.html.erb" }# index.html.erb
@@ -38,7 +38,7 @@ class TeamsController < ApplicationController
         end
       end
       def div3
-    @teams = Team.where("division_id = ?", "3").page(params[:page])
+    @teams = Team.where("division_id = ?", "4").page(params[:page])
     #Team.find (:all, :conditions => ['division_id < ?', ""], :order => 'start_date')
         respond_to do |format|
           format.html { render :template => "teams/index.html.erb" }# index.html.erb
@@ -47,7 +47,7 @@ class TeamsController < ApplicationController
     end
    
     def div4
-    @teams = Team.where("division_id = ?", "4").page(params[:page])
+    @teams = Team.where("division_id = ?", "5").page(params[:page])
     #Team.find (:all, :conditions => ['division_id < ?', ""], :order => 'start_date')
         respond_to do |format|
           format.html { render :template => "teams/index.html.erb" } # index.html.erb

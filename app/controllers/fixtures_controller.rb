@@ -196,7 +196,7 @@ class FixturesController < ApplicationController
     end
      
     @fixtures = Fixture.page(params[:page])
-    render :action=>"index"
+    redirect_to fixtures_url
     
   end
   

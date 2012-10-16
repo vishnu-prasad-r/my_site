@@ -53,9 +53,9 @@ CSV.foreach("courts2.csv") do |row|
   a= Court.create({:court=>row[0],
      :lights=>to_boolean(row[1]),
       :name=>row[2],
-       :address=>row[3],
-      :home=>row[4],
-       :mobile=>row[5]})
+       :address=>row[3]+ ", "+ row[4]+", " + row[5],
+      :home=>row[6],
+       :mobile=>row[7]})
   puts "Created court #{a.court}"
   @courtcount=@courtcount+1;
 end
