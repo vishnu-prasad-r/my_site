@@ -58,6 +58,20 @@ class FixturesController < ApplicationController
     end
   end
 
+  def search
+    query= String.new
+    if(!params[:fixture][:teamone_id].nil?)
+      query=query+ "teamone_id=#{params[:fixture][:teamone_id]} OR teamtwo_id=#{params[:fixture][:teamone_id]} "
+    end
+    if(!params[:fixture][:division_id].nil?)
+      if !query.empty? then query=query+ " AND " end
+        query=query+ "division_id=#{params[:fixture][:division_id]} "
+    end
+    @fixtures=Fixture.where(query).page.per(100)
+    render "index"
+    
+    
+  end
   # PUT /fixtures/1
   # PUT /fixtures/1.json
   def update

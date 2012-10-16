@@ -57,6 +57,7 @@ end
         get 'sendfixtures'
         get 'autogen'
         get 'remove'
+        post 'search' 
       end
       end
   # The priority is based upon order of creation:

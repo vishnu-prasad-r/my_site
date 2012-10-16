@@ -10,7 +10,7 @@
 </br>
 </br>
 <%end%>
-<%=form_for(:fixture , :url=>fixtures_url) do |f|%>
+<%=form_for(:fixture , :url=>search_fixtures_url) do |f|%>
 Division <%= f.collection_select :division_id, Division.all, :id, :name, include_blank: true %>
 Team<%=f.grouped_collection_select :teamone_id, Division.order("created_at ASC"), :teams, :name, :id, :Team_Name, include_blank: true%>
 <%=f.submit "Filter"%>
