@@ -48,18 +48,24 @@ raise ArgumentError.new("invalid value for Boolean: \"#{string}\"")
 end
 
 @courtcount=0; 
-CSV.foreach("courts2.csv") do |row|
+#CSV.foreach("courts2.csv") do |row|
   
-  a= Court.create({:court=>row[0],
-     :lights=>to_boolean(row[1]),
-      :name=>row[2],
-       :address=>row[3]+ ", "+ row[4]+", " + row[5],
-      :home=>row[6],
-       :mobile=>row[7]})
-  puts "Created court #{a.court}"
-  @courtcount=@courtcount+1;
+  #a= Court.create({:court=>row[0],
+   #  :lights=>to_boolean(row[1]),
+   #   :name=>row[2],
+   #    :address=>row[3]+ ", "+ row[4]+", " + row[5],
+    #  :home=>row[6],
+  #     :mobile=>row[7]})
+  #puts "Created court #{a.court}"
+  #@courtcount=@courtcount+1;
+#end
+#puts "Total #{@courtcount.to_s} courts added to the database"
+
+File.open("courts.csv", "r").each do |line|
+court,lights,name,address,home,mobile = line.strip.split("|")
+u = Court.new(:court => court, :lights => lights, :name => name, :address => address, :home => home, :mobile => mobile,)
+u.save
 end
-puts "Total #{@courtcount.to_s} courts added to the database"
 
 @fixturecount=0;
 CSV.foreach("fixtures2.csv") do |row|
