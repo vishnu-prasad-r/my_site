@@ -13,6 +13,7 @@
 <% end %>
 
 
+ <%if (can? :create, League) %>
+<%= link_to 'Create League Result', new_league_path %>
 
-<%= link_to 'New League', new_league_path %>
-
+<%end%>
