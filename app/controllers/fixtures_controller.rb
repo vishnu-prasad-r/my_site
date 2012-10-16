@@ -137,11 +137,17 @@ class FixturesController < ApplicationController
     #emailfixture(premiersheet,premierplayers)
   end
   
+  def autogendate
+    render "autogen" , :layout=>false
+  end
+  
   def autogen
     
+    lastday = Date.new(params[:start]["day(1i)"].to_i,params[:start]["day(2i)"].to_i,params[:start]["day(3i)"].to_i)
+    lastday= date_of_next(lastday,"Wednesday") 
     #obtaining next 15 wednessdays
     @days=Array.new
-    lastday= date_of_next("Wednesday")
+    #lastday= date_of_next("Wednesday")
     @days.push(lastday)
     
     14.times do |day|
@@ -199,7 +205,7 @@ class FixturesController < ApplicationController
     redirect_to fixtures_url
     
   end
-  
+ 
   
     def remove
       if(params[:confirm] && params[:confirm]=="yes")
@@ -254,9 +260,9 @@ class FixturesController < ApplicationController
     end
   end
   
-  def date_of_next(day)
+  def date_of_next(d,day)
   date  = Date.parse(day)
-  delta = date > Date.today ? 0 : 7
+  delta = date > d ? 0 : 7
   date + delta
   end
   

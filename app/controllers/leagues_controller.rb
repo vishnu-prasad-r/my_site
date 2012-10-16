@@ -2,6 +2,12 @@ class LeaguesController < ApplicationController
   
   # team.won= number of sets won . team.lost= number of games won , team.draw= total matches
   def index
+    @leagues1=League.all
+    @leagues1.each do |league|
+      if(league.dirty==true)
+        rak
+      end
+    end
     @leagues= League.order("year DESC").page(params[:page]).per(1)
   end
   

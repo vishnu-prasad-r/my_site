@@ -55,7 +55,8 @@ end
   resources :fixtures do
       collection do
         get 'sendfixtures'
-        get 'autogen'
+        get 'autogendate'
+        post 'autogen'
         get 'remove'
         post 'search' 
       end

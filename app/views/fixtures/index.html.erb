@@ -4,7 +4,8 @@
 <%if (can? :create, Fixture) %>
 
 <Button class="new_item_button" onClick = "return TINY.box.show({iframe:'<%=new_fixture_url%>',close:true,height:400,width:300})">Create Fixture</Button>
-<Button class="new_item_button" onClick = "window.location.href='<%=autogen_fixtures_url%>'">Auto-Generate Fixtures</Button>
+<Button class="new_item_button" onClick = "window.location.href='<%=autogen_fixtures_url%>'">AGF Old</Button>
+<Button class="new_item_button" onClick = "return TINY.box.show({url:'<%=autogendate_fixtures_url%>',close:true})">Auto-Generate Fixtures</Button>
 <Button class="new_item_button" onClick = "return TINY.box.show({url:'<%=sendfixtures_fixtures_url%>',close:true})">Send to Players</Button>
 <Button class="new_item_button" onClick = "return TINY.box.show({url:'<%=remove_fixtures_url%>',close:true})">Delete all future fixtures</Button>
 </br>
