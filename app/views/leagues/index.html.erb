@@ -8,12 +8,12 @@
     Tennis Widow League <%= league.year %> <p/>Final Results
     </h1>
     <%= league.result.html_safe %>
-    <%= link_to 'Delete this result', league, confirm: 'Are you sure?', method: :delete %>
+    
 
 <% end %>
 
 
  <%if (can? :create, League) %>
 <%= link_to 'Create League Result', new_league_path %>
-
+<%= link_to 'Delete this result', league, confirm: 'Are you sure?', method: :delete %>
 <%end%>

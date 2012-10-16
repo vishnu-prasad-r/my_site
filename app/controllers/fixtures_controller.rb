@@ -144,7 +144,7 @@ class FixturesController < ApplicationController
   def autogen
     
     lastday = Date.new(params[:start]["day(1i)"].to_i,params[:start]["day(2i)"].to_i,params[:start]["day(3i)"].to_i)
-    lastday= date_of_next(lastday,"Wednesday") 
+    
     #obtaining next 15 wednessdays
     @days=Array.new
     #lastday= date_of_next("Wednesday")
@@ -159,9 +159,9 @@ class FixturesController < ApplicationController
     @days.shuffle!
     
     #Fixtures for first 3 divisions
-    3.times do |i|
-      teams=Team.where(:division_id=>(i+1))
-      @div=Division.find(i+1)
+    [2,3,4].each do |i|
+      teams=Team.where(:division_id=>(i))
+      @div=Division.find(i)
       @j=0;
       teams.combination(2).to_a.each do |fix|
       fixture=Fixture.new
@@ -179,9 +179,9 @@ class FixturesController < ApplicationController
     end
     #fixtures for division 4 and premier
     
-    2.times do|i|
-      @teams=Team.where(:division_id=>(i+4))
-      @div=Division.find(i+4)
+    [1,5].each do|i|
+      @teams=Team.where(:division_id=>(i))
+      @div=Division.find(i)
       @j=0
       combinations=@teams.map {|x| @teams.map {|y| 
         if x!=y then

@@ -59,6 +59,12 @@ class ResultsController < ApplicationController
     @result.fixture=fixture
     @result.team1=fixture.teamone
     @result.team2=fixture.teamtwo
+    #Invalidate league so that its recreated
+    league= League.find_by_year(@result.date.year)
+    if(!league.nil?)
+      league.dirty=true
+      league.save
+    end
     respond_to do |format|
       if @result.save
         format.html { redirect_to @result, notice: 'Result was successfully created.' }
@@ -77,7 +83,13 @@ class ResultsController < ApplicationController
   # PUT /results/1.json
   def update
     @result = Result.find(params[:id])
-
+    
+     league= League.find_by_year(@result.date.year)
+    if(!league.nil?)
+      league.dirty=true
+      league.save
+    end
+    
     respond_to do |format|
       if @result.update_attributes(params[:result])
         format.html { redirect_to @result, notice: 'Result was successfully updated.' }

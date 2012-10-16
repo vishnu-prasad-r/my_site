@@ -2,11 +2,26 @@ class LeaguesController < ApplicationController
   
   # team.won= number of sets won . team.lost= number of games won , team.draw= total matches
   def index
-    @leagues1=League.all
-    @leagues1.each do |league|
-      if(league.dirty==true)
-        rak
+    @l=League.find_by_year(Date.today.year)
+    if @l.nil? then 
+      @l=League.new 
+      @l.dirty=true
       end
+    if (@l.dirty==true)
+      
+      @l.year=Date.today.year
+      result=String.new
+      Division.all.each do |division|
+      @division=division
+      generate(Date.today,division)
+    #@teams=@teams.order("score DESC")
+      @teams.sort! {|x,y| y.score <=> x.score}
+      result= result + (render_to_string "temp",:layout=>false) + "<p>"
+      end
+      @l.dirty=false
+      @l.result=result
+      @l.save
+      
     end
     @leagues= League.order("year DESC").page(params[:page]).per(1)
   end
