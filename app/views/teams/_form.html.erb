@@ -17,13 +17,13 @@
    </div>
 
   <div class="field">
-    <%= f.label :playerone_id %><br />
+    <%= f.label :playerone_id,"Player one" %><br />
     <%= f.grouped_collection_select :playerone_id, Division.order("created_at ASC"), :players, :name, :id, :Full_Name, include_blank: true %>
     
   </div>
   
   <div class="field">
-    <%= f.label :playertwo_id %><br />
+    <%= f.label :playertwo_id , "Player two" %><br />
     <%= f.grouped_collection_select :playertwo_id, Division.order("created_at ASC"), :players, :name, :id, :Full_Name, include_blank: true %>
   </div>
   <div class="actions">

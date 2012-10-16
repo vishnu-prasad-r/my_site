@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Division.create ([{:name=>"Premier"},{:name=>"Division 1"},{:name=>"Division 2"},{:name=>"Division 3"},{:name=>"Division 4"}])
+Division.create ([{:name=>"Division 1"},{:name=>"Division 2"},{:name=>"Division 3"},{:name=>"Division 4"},{:name=>"Premier"}])
 Role.create ([{:name=>"DivisionOneManager"},{:name=>"DivisionTwoManager"},{:name=>"DivisionThreeManager"},{:name=>"DivisionFourManager"},{:name=>"Admin"}])
 
 
@@ -27,7 +27,7 @@ CSV.foreach("players2.csv") do |row|
       :Postal_Code=>row[9],
        :Home_Phone=>row[10],
        :Work_Phone=>row[11],
-       :division=> if row[12].to_i==0 then  nil else Division.find((row[12].to_i)) end,
+       :division=> if row[12].to_i==0 then  nil else Division.find(if row[12].to_i==1 then 5 else  row[12].to_i-1  end ) end,
 
 
       :pot_luck=>row[13],
