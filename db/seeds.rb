@@ -63,7 +63,7 @@ end
 
 File.open("courts.csv", "r").each do |line|
 court,lights,name,address,home,mobile = line.strip.split("|")
-u = Court.new(:court => court, :lights => lights, :name => name, :address => address, :home => home, :mobile => mobile,)
+u = Court.new(:court => court, :lights => to_boolean(lights), :name => name, :address => address, :home => home, :mobile => mobile,)
 u.save
 end
 
