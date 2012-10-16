@@ -1,0 +1,7 @@
+<%= form_tag :action=>"autogen",:controller=>"fixtures" do %>
+Please select start date for fixtures
+<p></p>
+  <%= date_select("start", "day") %>
+  <p></p>
+  <%= submit_tag "Generate" ,:class=>"new_item_button"%>
+<% end %>
