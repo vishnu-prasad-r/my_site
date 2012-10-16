@@ -67,7 +67,7 @@ class ResultsController < ApplicationController
     end
     respond_to do |format|
       if @result.save
-        format.html { redirect_to @result, notice: 'Result was successfully created.' }
+        format.html { redirect_to @result, notice: '<script type="text/javascript">parent.location.reload()</script>' }
         format.json { render json: @result, status: :created, location: @result }
       else
         format.html { render action: "new" }
