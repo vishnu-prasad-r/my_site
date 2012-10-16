@@ -13,7 +13,11 @@
 
 <p>
   <b>Lights:</b>
-  <%= @court.lights %>
+  <%if @court.lights==true %>
+  Yes
+  <%else%>
+  No
+  <%end%>
 </p>
 
 <p>

@@ -29,7 +29,11 @@
 <% @courts.each do |court| %>
   <tr data-href="<%= court_path(court) %>">
     <td><%= court.court %></td>
-    <td><%= court.lights %></td>
+    <td> <%if @court.lights==true %>
+  Yes
+  <%else%>
+  No
+  <%end%></td>
     <td><%= court.name %></td>
     <td><%= court.address %></td>
     <td><%= court.home %></td>
