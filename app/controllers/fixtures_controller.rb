@@ -49,7 +49,7 @@ class FixturesController < ApplicationController
 
     respond_to do |format|
       if @fixture.save
-        format.html { redirect_to @fixture, notice: 'Fixture was successfully created.' }
+        format.html { render :inline=> 'Fixture was successfully created.' }
         format.json { render json: @fixture, status: :created, location: @fixture }
       else
         format.html { render action: "new" }

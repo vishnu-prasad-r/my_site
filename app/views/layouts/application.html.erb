@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+  	
     <title><%= content_for?(:title) ? yield(:title) : "Tennis Widows League : " %></title>
     <%= stylesheet_link_tag "application" %>
+    
     <%= javascript_include_tag "application" %>
+    
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
     <meta http-equiv="X-UA-Compatible" content="IE=9" />

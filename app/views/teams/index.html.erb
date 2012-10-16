@@ -1,7 +1,7 @@
 <h1>Teams</h1>
 <%if (can? :create, Team) %>
 <div class="search-div"> 
-<Button class="new_item_button" onClick = "return TINY.box.show({url:'<%=new_team_url%>',close:true})">New Team</Button>
+<Button class="new_item_button" onClick = "return TINY.box.show({iframe:'<%=new_team_url%>',close:true,width:200,height:350})">New Team</Button>
 </div> 
 <%end%>
 <%= paginate @teams %>

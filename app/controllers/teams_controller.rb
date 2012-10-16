@@ -93,7 +93,7 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
-        format.html { redirect_to @team, notice: 'Team was successfully created.' }
+        format.html { render :inline=>"Team was successfully created." }
         format.json { render json: @team, status: :created, location: @team }
       else
         format.html { render action: "new" }
